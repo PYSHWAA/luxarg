@@ -23,7 +23,7 @@ from . import read_write
 # insert mode 
 def insert_mode(master, text_field, show_status, status ):
     # show insert mode status
-    show_status['text'] = '%s\nSTOP MODE : <ESC> , SAVE MODE : <F2>' % status
+    show_status['text'] = '%s\nSTOP MODE : <ESC> , SAVE MODE : <F2> ' % status
     
     #return all 
     return text_field.configure(state='normal'), show_status
@@ -67,7 +67,7 @@ def save_mode(master, text_field, show_status, status ):
     )
 
     # go to stop mode 
-    show_status['text'] = '%s\nSAVE MODE : <F2> , INSERT MODE : <F1>' % status
+    show_status['text'] = '%s\nSAVE MODE : <F2> , INSERT MODE : <F1> , OPEN MODE : <F3>' % status
     # return all 
     return text_field.configure(state='disabled'), show_status
 
@@ -93,7 +93,7 @@ def open_mode(master, text_field, show_status, status):
     )
     
     # show open mode status
-    show_status['text'] = '%s\nSAVE MODE : <F2> , INSERT MODE : <F1>' % status
+    show_status['text'] = '%s\nSAVE MODE : <F2> , INSERT MODE : <F1> , OPEN MODE : <F3>' % status
 
     # return all
     return show_status, text_field.configure(state='normal')
