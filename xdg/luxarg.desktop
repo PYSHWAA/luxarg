@@ -26,3 +26,6 @@ Type=Application
 Exec=luxarg
 Name=Start LUXARG editor
 
+[Desktop Action Tray]
+Exec=luxarg --tray
+Name=Start in System Tray (LuxarG) 
