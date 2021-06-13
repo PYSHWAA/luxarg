@@ -66,8 +66,11 @@ def save_mode(master, text_field, show_status, status ):
         save_mode_window)
     )
 
+    # go to stop mode 
+    show_status['text'] = '%s\nSAVE MODE : <F2> , INSERT MODE : <F1>' % status
     # return all 
     return text_field.configure(state='disabled'), show_status
+
 
 
 def open_mode(master, text_field, show_status, status):
