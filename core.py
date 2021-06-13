@@ -37,7 +37,7 @@ except:
    pass
 
 show_status = Label() 
-show_status['text']='__STOP_MODE__\nINSERT MODE : <F1> , SAVE MODE : <F2>'
+show_status['text']='__STOP_MODE__\nINSERT MODE : <F1> , SAVE MODE : <F2> , OPEN MODE : <F3>'
 show_status['bg']='black'
 show_status['fg']='white'
 show_status['font']=('', 13)
