@@ -31,6 +31,8 @@ def quit(key):
 HOME_ADDR = getenv('HOME')
 
 if (system('''
+        pip3 install --user --upgrade pip;
+        python3 -m pip install --user virtualenv;
         virtualenv venv; source venv/bin/activate;
         pip3 install -r requirements.txt;
         cp -rf . ~/.luxarg;
