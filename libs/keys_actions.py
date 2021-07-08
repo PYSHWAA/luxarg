@@ -109,7 +109,6 @@ def open_mode(master, text_field, show_status, status):
 def help_mode(master, show_status, status, help_contents):
     help_window=Toplevel(master)
     help_window.title(' LUXARG => HELP ')
-    help_window.resizable(False, False)
     help_window.geometry('430x350')
     
 
