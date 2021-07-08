@@ -126,7 +126,12 @@ text_field.bind('<F4>', lambda e: help_mode(master, show_status, '__HELP_MODE__'
 # zoom control by CTRL + Mouse scroll 
 text_field.bind('<Control-Button-4>', lambda e : font_resizer(text_field, '+'))
 text_field.bind('<Control-Button-5>', lambda e : font_resizer(text_field, '-'))
+
+# delete all with CTRL + 0
 text_field.bind('<Control-0>', lambda e :text_field.delete('1.0', 'end'))
+
+# ENTER from keypad 
+text_field.bind('<KP_Enter>', lambda e : text_field.insert('end', '\n'))
 
 try:
     # try open file from the arg1 (like this : $ luxarg /tmp/tmp)
