@@ -2,23 +2,26 @@
 
 ''' 
 
-Short description of this Python module.
-Longer description of this module.
-This program is free software: you can redistribute it and/or modify it under
-the terms of the GNU General Public License as published by the Free Software
-Foundation, either version 3 of the License, or (at your option) any later
-version.
-This program is distributed in the hope that it will be useful, but WITHOUT
-ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
-You should have received a copy of the GNU General Public License along with
-this program. If not, see <http://www.gnu.org/licenses/>.
+
+Copyright [2019-2020-2021] [M.Amin Azimi .K (amzy-0)]
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 
 '''
 
 from tkinter import messagebox
-from os import chdir, path, read, register_at_fork, stat, system, umask
-from . import keys_actions
+from os import path
+from os import getenv
 
 
 def message(path_msg, text_msg):
@@ -37,14 +40,49 @@ def writer(path_and_filename, text, widget_destroy):
     
     # path_and_filename equal to EMPTY 
     if path_and_filename == '':
-        path_and_filename = 'Field is empty !\nPlease HIT <F2> and enter your file name again ...'
+        path_and_filename = '''Field is empty !
+Please HIT <F2> and enter your file name again ...'''
         message(path_and_filename, '')
 
     # if is directory :
     elif path.isdir(path_and_filename) or path_and_filename[-1] == '/':
         # if not a file 
         message(path_and_filename, ': Is directory')   
+
+    elif path_and_filename[:2] == '~/':
+        path_and_filename = path_and_filename.replace('~/','%s/'% 
+        str(getenv('HOME'))).strip()
     
+        try:
+            fin = open(path_and_filename, 'w')
+            fin.write(text)
+            message(path_and_filename, 'saved !')
+            
+            fin.close()
+        
+        except OSError as error :
+            message(path_and_filename, str(error)[10:])
+    
+
+    # relational path for home
+    elif path_and_filename[:2] == '~/':
+        path_and_filename = path_and_filename.replace('~/','%s/'% 
+        str(getenv('HOME'))).strip()
+        
+        try:
+            fin = open(path_and_filename, 'w')
+            fin.write(text)
+            message(path_and_filename, 'saved !')
+            
+            fin.close()
+        
+        except OSError as error :
+            message(path_and_filename, str(error)[10:])
+    
+    # relational path for home directory added (~)  
+    elif path_and_filename == '~':
+            message(path_and_filename, ': Is directory')
+
     else:
         
         try:
