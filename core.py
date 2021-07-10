@@ -67,7 +67,7 @@ scrollbar = Scrollbar(master)
 scrollbar.pack(side=RIGHT, fill='y')
 
 # definition a text_field 
-text_field = Text(master, yscrollcommand=scrollbar.set)
+text_field = Text(master, yscrollcommand=scrollbar.set, undo=True)
 text_field.pack(expand=True, fill=BOTH)
 text_field.focus()
 
@@ -123,6 +123,11 @@ text_field.bind('<F3>', lambda e: open_mode(master, text_field, show_status, '__
 # HELP MODE (binding F4)
 text_field.bind('<F4>', lambda e: help_mode(master, show_status, '__HELP_MODE__', help_contents))
 
+# UNDO
+text_field.bind('<Control-Z>', lambda e : text_field.edit_undo)
+# REDO
+text_field.bind('<Control-R>', lambda e : text_field.edit_redo)
+
 # zoom control by CTRL + Mouse scroll 
 text_field.bind('<Control-Button-4>', lambda e : font_resizer(text_field, '+'))
 text_field.bind('<Control-Button-5>', lambda e : font_resizer(text_field, '-'))
@@ -140,7 +145,7 @@ try:
         fin = open(argv[1], 'r')
         text_field.delete('1.0', 'end')
         text_field.insert('1.0', fin.read())
-        show_status['text']='__OPEN_MODE__\nINSERT MODE : <F1> , SAVE MODE : <F2>'
+        show_status['text']='__OPEN_MODE__\nSAVE MODE : <F4>'
         text_field.configure(state='disabled')
 
         fin.close()
