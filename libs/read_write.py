@@ -137,6 +137,20 @@ def reader(path_and_filename, text_field, widget_destroy):
         except FileNotFoundError as error:
             message('', str(error)[10:])
 
+    else :
+        try:
+            path_and_filename = path_and_filename.replace('~/', '%s/' %
+            str(getenv('HOME').strip()))
+
+            fin = open(path_and_filename, 'r')
+            readed =  fin.read()
+            text_field.insert('1.0', str(readed))
+            text_field.configure(state='disabled')
+            fin.close()
+
+        except FileNotFoundError as error:
+            message('', str(error)[10:])
+            
+            
     text_field.configure(state='disabled')
     return widget_destroy.destroy()
-
