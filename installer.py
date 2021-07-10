@@ -36,7 +36,7 @@ if (system('''
         virtualenv venv; source venv/bin/activate;
         pip3 install -r requirements.txt;
         cp -rf .  ~/.luxarg/;
-        cp -rf .  /root/.luxarg/;
+        sudo cp -rf .  /root/.luxarg/;
         sudo rm /usr/bin/luxarg 2> /dev/null; 
         sudo unlink /usr/bin/luxarg-update 2> /dev/null;
         pyinstaller -w -F --name 'luxarg'  --hidden-import='PIL._tkinter_finder' -i "./icon/luxarg.png"  core.py;
