@@ -116,7 +116,13 @@ def reader(path_and_filename, text_field, widget_destroy=None):
     elif path.isdir(path_and_filename) or path_and_filename[-1] == '/':
         # if not a file 
         message(path_and_filename, ': Is directory (Directory is not readable)')   
-        
+
+    elif path_and_filename[:2] == '~/':
+        path_and_filename = path_and_filename.replace('~/','%s/'% 
+        str(getenv('HOME'))).strip()
+
+    elif path_and_filename == '~':
+        message(path_and_filename, ': Is directory (Directory is not readable)')   
 
     # if a file 
     else:
@@ -138,6 +144,6 @@ def reader(path_and_filename, text_field, widget_destroy=None):
     
     except:
         text_field.configure(state='disabled')
-        
+    print(path_and_filename)
     return widget_destroy.destroy()
 
