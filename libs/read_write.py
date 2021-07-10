@@ -21,7 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
 from tkinter import messagebox
-from os import path
+from os import path, replace
 from os import getenv
 
 
@@ -99,10 +99,12 @@ Please HIT <F2> and enter your file name again ...'''
 
     return widget_destroy.destroy()
 
-
+####################################################
+# reader 
+####################################################
 
 # read a file 
-def reader(path_and_filename, text_field, widget_destroy=None):
+def reader(path_and_filename, text_field, widget_destroy):
 
     # delete all the buffer and after open file 
     text_field.delete('1.0', 'end')
@@ -110,40 +112,31 @@ def reader(path_and_filename, text_field, widget_destroy=None):
     if path_and_filename == '':
         path_and_filename = 'Field is empty !\nPlease HIT <F2> and enter your path and file name again ...'
         message(path_and_filename, '')
-        
-
-    # if is directory :
-    elif path.isdir(path_and_filename) or path_and_filename[-1] == '/':
-        # if not a file 
-        message(path_and_filename, ': Is directory (Directory is not readable)')   
-
-    elif path_and_filename[:2] == '~/':
-        path_and_filename = path_and_filename.replace('~/','%s/'% 
-        str(getenv('HOME'))).strip()
+    
 
     elif path_and_filename == '~':
         message(path_and_filename, ': Is directory (Directory is not readable)')   
 
-    # if a file 
-    else:
+    # if is directory :
+    elif path.isdir(path_and_filename) or path_and_filename[-1] == '/':
+        # if not a file 
+        message(path_and_filename, ': Is directory (Directory is not readable)') 
+    
+    
+    elif path_and_filename[:2] == '~/':
         try:
+            path_and_filename = path_and_filename.replace('~/', '%s/' %
+            str(getenv('HOME').strip()))
 
             fin = open(path_and_filename, 'r')
             readed =  fin.read()
+            text_field.insert('1.0', str(readed))
+            text_field.configure(state='disabled')
+            fin.close()
 
-        
-        except OSError as error:
+        except FileNotFoundError as error:
             message('', str(error)[10:])
-   
-        fin.close()
-        
-    try:    
-        text_field.insert('1.0', str(readed))
-        text_field.configure(state='disabled')
-        
-    
-    except:
-        text_field.configure(state='disabled')
-    print(path_and_filename)
+
+    text_field.configure(state='disabled')
     return widget_destroy.destroy()
 
