@@ -99,7 +99,10 @@ def message(path_msg, text_msg):
 def io_luxarg(path_and_filename, text, io_mode, text_field, file_path):
     
     # if ~/<*>.<txt/py/c/cpp/...>
-    path_and_filename = path_and_filename.replace('~/', '%s/' % str(getenv('HOME').strip()))
+    if path_and_filename[:2]=='~/':
+        
+        path_and_filename = path_and_filename.replace('~/', '%s/' % 
+        str(getenv('HOME').strip()))
         
     # path_and_filename equal to EMPTY 
     if path_and_filename == '':
