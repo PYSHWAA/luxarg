@@ -67,8 +67,7 @@ if (system('''
     fill = urwid.Filler(txt, 'middle')
     loop = urwid.MainLoop(fill, unhandled_input=quit)
     loop.run()
-    system('exec %s' %getenv('SHELL'))
-    system('exit')
+    system('exec %s && exit' %getenv('SHELL'))
  
 else:
     print('status : broken !')
