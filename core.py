@@ -25,6 +25,7 @@ from sys import argv, exit
 from tkinter import BOTH, RIGHT, SUNKEN, Tk, Text, Scrollbar,Label
 from libs.keys_actions import *
 from PIL import Image, ImageTk
+from libs.read_write import message
 
 help_contents = '''
 
@@ -38,6 +39,8 @@ CORSUR RIGHT: <Ctrl + f> The CURSOR move the cursor forward one space.
 CORSUR LEFT : <Ctrl + b> The CURSOR move the cursor backward one space.
 Copy        : <Ctrl + c>
 Paste       : <Ctrl + v>
+UNDO        : <Ctrl + z>
+REDO        : <Ctrl + r>
 Cut         : <Ctrl + w>
 HELP   CLI  : luxarg <-h/--help>
 ZOOM IN     : <Ctrl + sroll UP>
@@ -152,7 +155,7 @@ try:
 
     # if pass is not true 
     except OSError as error:
-        from libs.read_write import message
+        
         message('', str(error)[10:])
 except:
     pass
