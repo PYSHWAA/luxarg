@@ -21,7 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
 from tkinter import messagebox
-from os import path, replace
+from os import path
 from os import getenv
 
 
