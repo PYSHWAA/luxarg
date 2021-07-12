@@ -22,7 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from os import getenv
 from sys import argv, exit
-from tkinter import BOTH, RIGHT, SUNKEN, Tk, Text, Scrollbar,Label
+from tkinter import BOTH, RIGHT, SUNKEN, Tk, Text, Scrollbar,Label, Entry
 from libs.keys_actions import *
 from PIL import Image, ImageTk
 from libs.read_write import message
@@ -62,6 +62,11 @@ show_status['fg']='white'
 show_status['font']=('', 13)
 
 show_status.pack(fill='x')
+
+# for storing all the file_path variable value
+file_path = Entry(master, font=('', 13))
+file_path.config(bg='black', fg='white', insertbackground='yellow')
+file_path.pack(fill=BOTH)
 
 # adding scrollbar
 scrollbar = Scrollbar(master)
@@ -112,22 +117,51 @@ def font_resizer(component, minesOrPlus):
 
 
 # INSERT MODE (binding F1)
-text_field.bind('<F1>', lambda e :  insert_mode(text_field, show_status, '__INSERT_MODE__'))
+text_field.bind('<F1>', lambda e :  insert_mode(
+    text_field,
+    show_status,
+    '__INSERT_MODE__'
+    )
+)
 
 # STOP MODE (binding ESC)
-text_field.bind('<Escape>', lambda e :  stop_mode(text_field, show_status, '__STOP_MODE__'))
+text_field.bind('<Escape>', lambda e :  stop_mode(
+    text_field,
+    show_status,
+    '__STOP_MODE__'
+    )
+)
 
 # SAVE MODE (binding F2)
-text_field.bind('<F2>', lambda e :  save_mode(master, text_field, show_status, '__SAVE_MODE__'))
+text_field.bind('<F2>', lambda e :  save_mode(
+    text_field,
+    show_status,
+    '__SAVE_MODE__',
+    file_path
+    )
+)
 
 # OPEN MODE (binding F3)
-text_field.bind('<F3>', lambda e: open_mode(master, text_field, show_status, '__OPEN_MODE__'))
+text_field.bind('<F3>', lambda e: open_mode(
+    text_field,
+    show_status,
+    '__OPEN_MODE__',
+    file_path
+    )
+)
 
 # HELP MODE (binding F4)
-text_field.bind('<F4>', lambda e: help_mode(master, show_status, '__HELP_MODE__', help_contents))
+text_field.bind('<F4>', lambda e: help_mode(
+    master,
+    show_status,
+    '__HELP_MODE__',
+    help_contents
+    )
+)
 
 # UNDO
 text_field.bind('<Control-Z>', lambda e : text_field.edit_undo)
+
 # REDO
 text_field.bind('<Control-R>', lambda e : text_field.edit_redo)
 
