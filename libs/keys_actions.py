@@ -19,8 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
 
-from genericpath import isfile
-from tkinter import BOTH, Entry, Toplevel, Label
+from tkinter import BOTH, Toplevel, Label
 from . import read_write
 
 global file_mode 
