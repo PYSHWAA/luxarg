@@ -20,12 +20,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 from genericpath import isfile
-from tkinter import BOTH, Toplevel, Label
-from tkinter.messagebox import showerror  
+from tkinter import BOTH, Entry, Toplevel, Label
 from . import read_write
 
 global file_mode 
-file_mode = '\n<ESC> for exit'
+file_mode = '\nExample : /tmp/tmp\n<ESC> for exit'
 
 # insert mode 
 def insert_mode(text_field, show_status, status ):
@@ -51,6 +50,7 @@ def stop_mode(text_field, show_status, status ):
 # save mode 
 def save_mode(text_field, show_status, status, save_path):
 
+    save_path.delete(0,'end')
     save_path.focus()
 
     # save file with ENTER
@@ -67,12 +67,17 @@ def save_mode(text_field, show_status, status, save_path):
     # go to stop mode 
     show_status['text'] = '%s\nHELP MODE : <F4>%s' % (status, file_mode)
 
+    # if the user want to leave file Entry
+    save_path.bind('<Escape>', lambda e : text_field.focus())
+
     # return all 
-    return text_field.configure(state='disabled'), show_status
+    return text_field.configure(state='disabled'), show_status 
 
 
 #open mode 
 def open_mode(text_field, show_status, status, file_path):
+    
+    file_path.delete(0,'end')
     file_path.focus()
 
     # open file with ENTER
@@ -90,6 +95,8 @@ def open_mode(text_field, show_status, status, file_path):
     # show open mode status
     show_status['text'] = '%s\nHELP MODE : <F4>%s' % (status, file_mode)
 
+    file_path.bind('<Escape>', lambda e : text_field.focus())
+    
     # return all
     return text_field.configure(state='normal'), show_status
 
