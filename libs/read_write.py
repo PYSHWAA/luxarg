@@ -156,7 +156,4 @@ def io_luxarg(path_and_filename, text, io_mode, text_field, file_path):
         except OSError as error :
             message(path_and_filename, str(error)[10:])
 
-    file_path.bind('<Escape>', lambda e : text_field.focus())
-    file_path.delete(0, 'end')
     return text_field.focus()
-    
