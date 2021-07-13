@@ -1,8 +1,9 @@
-def open_mode_inside(text_field, show_status, path_arg):
+def open_mode_inside(text_field, show_status, io_mode, path_arg):
 
     text_field.configure(stat='normal')
+    
     # open file with read mode 
-    fin = open(path_arg, 'r')
+    fin = open(path_arg, io_mode)
     
     #insert from file 
     text_field.delete('1.0', 'end')
