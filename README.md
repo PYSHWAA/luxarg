@@ -65,6 +65,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     Copy        : <Ctrl + c>
     Paste       : <Ctrl + v>
     Cut         : <Ctrl + w>
+    UNDO        : <Ctrl + z>
+    REDO        : <Ctrl + r>
     HELP   CLI  : luxarg <-h/--help>
     ZOOM IN     : <Ctrl + sroll UP>
     ZOOM OUT    : <Ctrl + sroll Down>
