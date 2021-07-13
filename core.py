@@ -20,12 +20,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 '''
 
+import io
 from os import getenv
 from sys import argv, exit
 from tkinter import BOTH, RIGHT, SUNKEN, Tk, Text, Scrollbar,Label, Entry
 from libs.keys_actions import *
 from PIL import Image, ImageTk
 from libs.read_write import message
+from libs.file_from_args import open_mode_by_arg
 
 help_contents = '''
 
@@ -59,13 +61,20 @@ show_status = Label()
 show_status['text']='__STOP_MODE__\nHELP MODE : <F4>'
 show_status['bg']='black'
 show_status['fg']='white'
-show_status['font']=('', 13)
+show_status['font']=('sans', 13)
 
 show_status.pack(fill='x')
 
 # for storing all the file_path variable value
 file_path = Entry(master, font=('', 13))
-file_path.config(bg='black', fg='white', insertbackground='yellow')
+
+# "file_path" configure : 
+file_path.configure(bg='black', 
+    fg='white',
+    insertbackground='yellow',
+)
+
+file_path.insert(0, 'file path example : /tmp/tmp')
 file_path.pack(fill=BOTH)
 
 # adding scrollbar
@@ -178,15 +187,8 @@ text_field.bind('<KP_Enter>', lambda e : text_field.insert('end', '\n'))
 try:
     # try open file from the arg1 (like this : $ luxarg /tmp/tmp)
     try:
-        text_field.configure(stat='normal')
-        fin = open(argv[1], 'r')
-        text_field.delete('1.0', 'end')
-        text_field.insert('1.0', fin.read())
-        show_status['text']='__OPEN_MODE__\nSAVE MODE : <F4>'
-        text_field.configure(state='disabled')
-
-        fin.close()
-
+        open_mode_by_arg(text_field, show_status, 'r', argv[1])
+        
     # if pass is not true 
     except OSError as error:
         
