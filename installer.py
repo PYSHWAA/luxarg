@@ -29,11 +29,21 @@ def quit(key):
 # home address (~)  
 HOME_ADDR = getenv('HOME')
 
-if (system('''
+if  system('''
+        sudo apt install python3-tk -y  2> /dev/null;
+        sudo dnf install -y python3-tkinter 2> /dev/null;
+        sudo pacman -S tk -y 2> /dev/null;
+        sudo yum install -y python3-tkinter  2> /dev/null;
+        sudo zypper in -y python-tk 2> /dev/null;
+            ''')==0:
+            pass
+elif (system('''
         pip3 install --upgrade pip;
         pip3 install virtualenv;
-        virtualenv venv; source venv/bin/activate;
+        virtualenv venv;
+        source venv/bin/activate;
         pip3 install -r requirements.txt;
+        mkdir ~/.luxarg ; sudo mkdir /root/.luxarg;
         cp -rf .  ~/.luxarg/;
         sudo cp -rf .  /root/.luxarg/;
         sudo rm /usr/bin/luxarg 2> /dev/null; 
@@ -48,13 +58,6 @@ if (system('''
  
     # install dependencies
     
-    system('''
-        sudo apt install python3-tk -y  2> /dev/null;
-        sudo dnf install -y python3-tkinter 2> /dev/null;
-        sudo pacman -S tk -y 2> /dev/null;
-        sudo yum install -y python3-tkinter  2> /dev/null;
-        sudo zypper in -y python-tk 2> /dev/null;
-            ''')    
     # desktop application icon for menu 
     system('sudo cp -rf ./xdg/luxarg.desktop /usr/share/applications')
     system('cp -rf ./xdg/luxarg.desktop ~/.local/share/applications')
