@@ -21,7 +21,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from os import system, getenv
 
-import urwid
 
 # quit from installed message
 def quit(key):
@@ -48,6 +47,7 @@ if (system('''
     % (HOME_ADDR, HOME_ADDR))) == 0:
  
     # install dependencies
+    
     system('''
         sudo apt install python3-tk -y  2> /dev/null;
         sudo dnf install -y python3-tkinter 2> /dev/null;
@@ -63,6 +63,7 @@ if (system('''
     system("sudo cp -rf ./icon/luxarg.png /usr/share/icons/")
 
     # installed successfuly message
+    import urwid
     txt = urwid.Text(u'Luxarg INSTALLED successfuly !\nfor quit : \'q\'', align='left')
     fill = urwid.Filler(txt, 'middle')
     loop = urwid.MainLoop(fill, unhandled_input=quit)
