@@ -72,6 +72,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     ZOOM OUT    : <Ctrl + sroll Down>
 
 # INSTALLATION
+    $ sudo pip install -Ur requirements.txt
     $ python<3X> installer.py
 
 # dependencies
