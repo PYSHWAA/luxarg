@@ -99,13 +99,14 @@ elif argv[1] == '-h' or argv[1]=='--help':
  
       
 
-# try:
-    # try to set logo 
-img = ImageTk.PhotoImage(Image.open('%s/.luxarg/icon/luxarg.png' % getenv('HOME')))
-master.iconphoto(False, img)
+try:
+    #try to set logo 
+    img = ImageTk.PhotoImage(Image.open('%s/.luxarg/icon/luxarg.png' % getenv('HOME')))
+    master.iconphoto(False, img)
 
-# except:
-#    pass
+# if logo not found, just continue 
+except:
+    pass
 
 # set font size to 20
 font_size = 20
