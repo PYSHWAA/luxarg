@@ -22,8 +22,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import io
 from os import getenv
-from sys import argv, exit
-from tkinter import BOTH, RIGHT, SUNKEN, Tk, Text, Scrollbar,Label, Entry
+from sys import argv, builtin_module_names, exit
+from tkinter import BOTH, RIGHT, SUNKEN, Tk, Text, Scrollbar,Label, Entry, font
+from typing import KeysView
 from libs.keys_actions import *
 from PIL import Image, ImageTk
 from libs.read_write import message
@@ -37,19 +38,18 @@ OPEN   MODE : <F3>
 HELP   MODE : <F4>
 DELETE ALL  : <Ctrl + 0>
 SELECT ALL  : <Ctrl + />
-CORSUR RIGHT: <Ctrl + f> The CURSOR move the cursor forward one space.
-CORSUR LEFT : <Ctrl + b> The CURSOR move the cursor backward one space.
+CORSUR RIGHT: <Ctrl + f> move the cursor forward one space.
+CORSUR LEFT : <Ctrl + b> move the cursor backward one space.
 Copy        : <Ctrl + c>
 Paste       : <Ctrl + v>
-UNDO        : <Ctrl + z>
-REDO        : <Ctrl + r>
 Cut         : <Ctrl + w>
+UNDO        : <Ctrl + z>
+REDO        : <Ctrl + Shift + z>
 HELP   CLI  : luxarg <-h/--help>
-ZOOM IN     : <Ctrl + sroll UP>
-ZOOM OUT    : <Ctrl + sroll Down>
-
+ZOOM IN     : <Ctrl + equal(+)>
+ZOOM OUT    : <Ctrl + minus(-)>
+    
 '''
-
 
 master = Tk()
 master.geometry("700x700")
@@ -96,9 +96,8 @@ elif argv[1] == '-h' or argv[1]=='--help':
 
     master.forget(master)
     exit()
- 
-      
 
+text_field.bind_all('<Key>', print(str(text_field.bind_all('<Key>').strip())))
 try:
     #try to set logo 
     img = ImageTk.PhotoImage(Image.open('%s/.luxarg/icon/luxarg.png' % getenv('HOME')))
@@ -114,14 +113,19 @@ font_size = 20
 #font resizer 
 def font_resizer(component, minesOrPlus):
     global font_size 
-    if minesOrPlus == '+': 
+    
+  
+    if minesOrPlus == '+' and font_size <= 100: 
         component['font'] = ('', font_size + 1)
         font_size += 1
-    else: 
+    elif minesOrPlus == '-' and font_size >= 10 : 
         component['font'] = ('', font_size - 1)
         font_size -= 1
+
+        return component['font']
     
-    return component['font']
+    else:
+        return
 
 
 
@@ -173,11 +177,13 @@ text_field.bind('<F4>', lambda e: help_mode(
 text_field.bind('<Control-Z>', lambda e : text_field.edit_undo)
 
 # REDO
-text_field.bind('<Control-R>', lambda e : text_field.edit_redo)
+text_field.bind('<Control-Shift-Z>', lambda e : text_field.edit_redo)
 
 # zoom control by CTRL + Mouse scroll 
-text_field.bind('<Control-Button-4>', lambda e : font_resizer(text_field, '+'))
-text_field.bind('<Control-Button-5>', lambda e : font_resizer(text_field, '-'))
+# text_field.bind('<Control-Button-4>', lambda e : font_resizer(text_field, '+'))
+# text_field.bind('<Control-Button-5>', lambda e : font_resizer(text_field, '-'))
+text_field.bind('<Control-equal>', lambda e : font_resizer(text_field, '+'))
+text_field.bind('<Control-minus>', lambda e : font_resizer(text_field, '-'))
 
 # delete all with CTRL + 0
 text_field.bind('<Control-0>', lambda e :text_field.delete('1.0', 'end'))

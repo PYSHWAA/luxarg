@@ -1,5 +1,13 @@
 # luxarg :
 
+![issues](https://img.shields.io/github/issues/amzy-0/luxarg)
+
+![forks](https://img.shields.io/github/forks/amzy-0/luxarg)
+
+![stars](https://img.shields.io/github/stars/amzy-0/luxarg)
+
+![license](https://img.shields.io/github/license/amzy-0/luxarg)
+
 
 LUXARG is another keyboard friendly text editor.
 
@@ -10,16 +18,26 @@ Easy to use and user-friendly !
 
 
 
-LUXARG support :
+# LUXARG support :
 
-Fedora, CENTOS and RedHat,
-
-Debian and Ubuntu,
-
-OpenSUSE,
-
-Arch and Manjaro, ...
-
+![](https://icons.iconarchive.com/icons/tatice/operating-systems/48/Fedora-icon.png) 
+Fedora, 
+![](https://icons.iconarchive.com/icons/fatcow/farm-fresh/32/centos-icon.png)
+CENTOS,
+![](https://icons.iconarchive.com/icons/saki/nuoveXT/48/Apps-redhat-icon.png)
+RedHat,
+![](https://icons.iconarchive.com/icons/tatice/operating-systems/48/Debian-icon.png)
+Debian,
+![](https://icons.iconarchive.com/icons/tatice/operating-systems/48/Ubuntu-icon.png)
+Ubuntu, 
+![](https://icons.iconarchive.com/icons/papirus-team/papirus-apps/48/distributor-logo-opensuse-icon.png)
+OpenSUSE, 
+![](https://icons.iconarchive.com/icons/fatcow/farm-fresh/32/arch-linux-icon.png)
+Arch,
+![](https://icons.iconarchive.com/icons/papirus-team/papirus-apps/48/manjaro-welcome-icon.png)
+Manjaro,
+![](https://icons.iconarchive.com/icons/fatcow/farm-fresh/32/freebsd-icon.png)
+FreeBSD
 
 # ICON
 
@@ -60,16 +78,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     HELP   MODE : <F4>
     DELETE ALL  : <Ctrl + 0>
     SELECT ALL  : <Ctrl + />
-    CORSUR RIGHT: <Ctrl + f> The CURSOR move the cursor forward one space.
-    CORSUR LEFT : <Ctrl + b> The CURSOR move the cursor backward one space.
+    CORSUR RIGHT: <Ctrl + f> move the cursor forward one space.
+    CORSUR LEFT : <Ctrl + b> move the cursor backward one space.
     Copy        : <Ctrl + c>
     Paste       : <Ctrl + v>
     Cut         : <Ctrl + w>
     UNDO        : <Ctrl + z>
-    REDO        : <Ctrl + r>
+    REDO        : <Ctrl + Shift + z>
     HELP   CLI  : luxarg <-h/--help>
-    ZOOM IN     : <Ctrl + sroll UP>
-    ZOOM OUT    : <Ctrl + sroll Down>
+    ZOOM IN     : <Ctrl + equal(=)>
+    ZOOM OUT    : <Ctrl + minus(-)>
 
 # INSTALLATION
     $ sudo pip install -Ur requirements.txt
