@@ -19,6 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
 
+from asyncio.unix_events import SafeChildWatcher
 from tkinter import BOTH, Toplevel, Label
 from . import read_write
 
@@ -49,9 +50,9 @@ def stop_mode(text_field, show_status, status ):
 # save mode 
 def save_mode(text_field, show_status, status, save_path):
 
-    save_path.delete(0,'end')
     save_path.focus()
-
+    save_path.select_range(0, 'end')
+    
     # save file with ENTER
     save_path.bind('<Return>', lambda e : 
         read_write.io_luxarg(save_path.get().strip(),
@@ -76,8 +77,8 @@ def save_mode(text_field, show_status, status, save_path):
 #open mode 
 def open_mode(text_field, show_status, status, file_path):
     
-    file_path.delete(0,'end')
     file_path.focus()
+    file_path.select_range(0, 'end')
 
     # open file with ENTER
     file_path.bind('<Return>', 
