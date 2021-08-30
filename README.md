@@ -90,25 +90,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     ZOOM OUT    : <Ctrl + minus(-)>
 
 # INSTALLATION
-    $ sudo pip install -Ur requirements.txt
+    
     $ python<3X> installer.py
 
 # dependencies
+    
     $ pip3 install -r requirements.txt
 
 # update method
-	    
-    old method(v0.1, v0.1.1){
-		
-                $ cd ~/.luxarg
-    		
-                $ python<3X> update.py
-    	}
-
-
-    $ luxarg-update (v0.1.2)
+    
+    $ luxarg-update (v1.0)
 
 
 # Install pip
     pip.txt
 
+# local execute 
+    $ pip install -Ur requirements.txt
+    $ ./core.py
