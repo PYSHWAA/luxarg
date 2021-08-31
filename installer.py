@@ -20,7 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
 from os import system, getenv
-system('sudo pip install -r requirements.txt')
+system('sudo pip install -Ur requirements.txt')
 
 # quit from installed message
 def quit(key):
