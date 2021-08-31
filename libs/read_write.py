@@ -20,16 +20,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 '''
 
-import io
-import os
-from posixpath import abspath, expanduser
-from sys import float_repr_style
 from tkinter import messagebox
 from os import path
 from os import getenv
-from typing import final
-
-from PIL.Image import new
 
 def message(path_msg, text_msg):
 

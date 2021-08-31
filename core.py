@@ -20,11 +20,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 '''
 
-import io
 from os import getenv
-from sys import argv, builtin_module_names, exit
-from tkinter import BOTH, RIGHT, SUNKEN, Tk, Text, Scrollbar,Label, Entry, font
-from typing import KeysView
+from sys import argv, exit
+from tkinter import BOTH, RIGHT, SUNKEN, Tk, Text, Scrollbar,Label, Entry
 from libs.keys_actions import *
 from PIL import Image, ImageTk
 from libs.read_write import message
