@@ -18,8 +18,6 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
-
-from asyncio.unix_events import SafeChildWatcher
 from tkinter import BOTH, Toplevel, Label
 from . import read_write
 
