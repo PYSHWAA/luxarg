@@ -54,7 +54,7 @@ master.geometry("700x700")
 master.title("LuxarG")
 master.minsize(height=500, width=500)
 master.config(bg='black')
-    
+
 show_status = Label() 
 show_status['text']='__STOP_MODE__\nHELP MODE : <F4>'
 show_status['bg']='black'
@@ -84,8 +84,9 @@ scrollbar.pack(side=RIGHT, fill='y')
 # definition a text_field 
 text_field = Text(master, yscrollcommand=scrollbar.set, undo=True)
 text_field.pack(expand=True, fill=BOTH)
+text_field.configure(spacing2=130)
 text_field.focus()
-
+# text_field.columnconfigure(0, pad=10)
 
 if argv[0] and len(argv) ==1:
     pass
@@ -95,7 +96,6 @@ elif argv[1] == '-h' or argv[1]=='--help':
     master.forget(master)
     exit()
 
-text_field.bind_all('<Key>', print(str(text_field.bind_all('<Key>').strip())))
 try:
     #try to set logo 
     img = ImageTk.PhotoImage(Image.open('%s/.luxarg/icon/luxarg.png' % getenv('HOME')))
@@ -135,7 +135,6 @@ text_field.bind('<F1>', lambda e :  insert_mode(
     '__INSERT_MODE__'
     )
 )
-
 # STOP MODE (binding ESC)
 text_field.bind('<Escape>', lambda e :  stop_mode(
     text_field,
