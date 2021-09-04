@@ -84,7 +84,6 @@ scrollbar.pack(side=RIGHT, fill='y')
 # definition a text_field 
 text_field = Text(master, yscrollcommand=scrollbar.set, undo=True)
 text_field.pack(expand=True, fill=BOTH)
-text_field.configure(spacing2=130)
 text_field.focus()
 # text_field.columnconfigure(0, pad=10)
 
