@@ -85,6 +85,7 @@ scrollbar.pack(side=RIGHT, fill='y')
 text_field = Text(master, yscrollcommand=scrollbar.set, undo=True)
 text_field.pack(expand=True, fill=BOTH)
 text_field.focus()
+
 # text_field.columnconfigure(0, pad=10)
 
 if argv[0] and len(argv) ==1:
@@ -96,11 +97,16 @@ elif argv[1] == '-h' or argv[1]=='--help':
     exit()
 
 try:
-    #try to set logo 
-    img = ImageTk.PhotoImage(Image.open('%s/.luxarg/icon/luxarg.png' % getenv('HOME')))
-    master.iconphoto(False, img)
+    try:
+        # try to set logo 
+        img = ImageTk.PhotoImage(Image.open('%s/.luxarg/icon/luxarg.png' % getenv('HOME')))
+        master.iconphoto(False, img)
 
-# if logo not found, just continue 
+    except:
+        # local loading (LOGO) 
+        img = ImageTk.PhotoImage(Image.open('./icon/luxarg.png'))
+        master.iconphoto(False, img)
+    
 except:
     pass
 
@@ -190,7 +196,7 @@ text_field.bind('<KP_Enter>', lambda e : text_field.insert('end', '\n'))
 try:
     # try open file from the arg1 (like this : $ luxarg /tmp/tmp)
     try:
-        open_mode_by_arg(text_field, show_status, 'r', argv[1])
+        open_mode_by_arg(text_field, show_status, 'r', file_path, argv[1])
         
     # if pass is not true 
     except OSError as error:
@@ -203,8 +209,8 @@ except:
 text_field.configure(state='disabled')
 
 text_field.config(bg='black', fg='white', 
-                padx=15, pady=0, 
                 relief=SUNKEN, 
+                blockcursor=True,
                 insertbackground='yellow', insertborderwidth=1,
                 font=('', font_size)
                 )
@@ -212,7 +218,7 @@ text_field.config(bg='black', fg='white',
 
 # text_field
 # configuring the scrollbar
-scrollbar.config(bg='gray', command=text_field.yview)
+scrollbar.config(bg='black', command=text_field.yview)
 
 
 master.mainloop()
