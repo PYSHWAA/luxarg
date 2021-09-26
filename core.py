@@ -20,7 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 '''
 
-from os import path
+from os import path, getenv
 from sys import argv, exit
 from tkinter import BOTH, RIGHT, SUNKEN, Tk, Text, Scrollbar,Label, Entry
 from libs.keys_actions import *
