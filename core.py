@@ -20,7 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 '''
 
-from os import getenv
+from os import path
 from sys import argv, exit
 from tkinter import BOTH, RIGHT, SUNKEN, Tk, Text, Scrollbar,Label, Entry
 from libs.keys_actions import *
@@ -64,6 +64,7 @@ show_status['font']=('sans', 13)
 show_status.pack(fill='x')
 
 # for storing all the file_path variable value
+global file_path
 file_path = Entry(master, font=('', 13))
 
 # "file_path" configure : 
@@ -196,7 +197,9 @@ text_field.bind('<KP_Enter>', lambda e : text_field.insert('end', '\n'))
 try:
     # try open file from the arg1 (like this : $ luxarg /tmp/tmp)
     try:
-        open_mode_by_arg(text_field, show_status, 'r', file_path, argv[1])
+        open_mode_by_arg(text_field, show_status, 'r', argv[1])
+        file_path.delete(0, 'end')
+        file_path.insert(0, str(path.expanduser(argv[1])))
         
     # if pass is not true 
     except OSError as error:
