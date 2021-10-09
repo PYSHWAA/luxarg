@@ -213,8 +213,11 @@ text_field.configure(state='disabled')
 
 text_field.config(bg='black', fg='white', 
                 relief=SUNKEN, 
-                blockcursor=True,
-                insertbackground='yellow', insertborderwidth=1,
+                spacing1=10,
+                insertbackground='yellow',
+                insertborderwidth=1,
+                padx=20,
+                pady=4,
                 font=('', font_size)
                 )
 
