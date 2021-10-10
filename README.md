@@ -35,9 +35,7 @@ OpenSUSE,
 ![](https://icons.iconarchive.com/icons/fatcow/farm-fresh/32/arch-linux-icon.png)
 Arch,
 ![](https://icons.iconarchive.com/icons/papirus-team/papirus-apps/48/manjaro-welcome-icon.png)
-Manjaro,
-![](https://icons.iconarchive.com/icons/fatcow/farm-fresh/32/freebsd-icon.png)
-FreeBSD
+Manjaro
 
 # ICON
 
