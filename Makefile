@@ -14,6 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+SHELL = bash
 
 .DEFAULT_GOAL := install
 
@@ -75,7 +76,7 @@ install:
 	
 	-@sudo cp -rf luxarg/ /usr/share && rm -rf luxarg/
 	
-	-@echo "exec /usr/share/luxarg/luxarg" > luxarg 
+	-@echo "exec /usr/share/luxarg/luxarg \$$1" > luxarg 
 	
 	@sudo chmod 755 luxarg
 	
