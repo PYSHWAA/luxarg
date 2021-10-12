@@ -89,7 +89,7 @@ ZOOM OUT    : <Ctrl + minus(-)>
 
 # INSTALLATION
 
-You must be install "pip" before installation   
+You must install "pip" before installation   
 
 
     $ make 
