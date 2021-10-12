@@ -70,26 +70,33 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # KEYS : 
 
-    INSERT MODE : <F1>
-    SAVE   MODE : <F2>
-    OPEN   MODE : <F3>
-    HELP   MODE : <F4>
-    DELETE ALL  : <Ctrl + 0>
-    SELECT ALL  : <Ctrl + />
-    CORSUR RIGHT: <Ctrl + f> move the cursor forward one space.
-    CORSUR LEFT : <Ctrl + b> move the cursor backward one space.
-    Copy        : <Ctrl + c>
-    Paste       : <Ctrl + v>
-    Cut         : <Ctrl + w>
-    UNDO        : <Ctrl + z>
-    REDO        : <Ctrl + Shift + z>
-    HELP   CLI  : luxarg <-h/--help>
-    ZOOM IN     : <Ctrl + equal(=)>
-    ZOOM OUT    : <Ctrl + minus(-)>
+INSERT MODE : <F1>
+SAVE   MODE : <F2>
+OPEN   MODE : <F3>
+HELP   MODE : <F4>
+DELETE ALL  : <Ctrl + 0>
+SELECT ALL  : <Ctrl + />
+CORSUR RIGHT: <Ctrl + f> move the cursor forward one space.
+CORSUR LEFT : <Ctrl + b> move the cursor backward one space.
+Copy        : <Ctrl + c>
+Paste       : <Ctrl + v>
+Cut         : <Ctrl + w>
+UNDO        : <Ctrl + z>
+REDO        : <Ctrl + Shift + z>
+HELP   CLI  : luxarg <-h/--help>
+ZOOM IN     : <Ctrl + equal(=)>
+ZOOM OUT    : <Ctrl + minus(-)>
 
 # INSTALLATION
-    
-    $ python<3X> installer.py
+
+You must be install "pip" before installation   
+
+
+    $ make 
+
+    # or
+
+    $ make install clean #(optional and the better method) 
 
 # dependencies
     
