@@ -35,7 +35,3 @@ $ sudo pacman -S python-pip		#command for Python 3
 To install pip on OpenSUSE:
 
 $ sudo zypper install python3-pip	#command for Python 3
-
-To install pip on FreeBSD: 
-
-# pkg install py38pip 
