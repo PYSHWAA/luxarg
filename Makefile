@@ -37,32 +37,7 @@ clean:
 	-@rm -rf __pycache__/ build/ core.spec dist/ luxarg.spec 
 
 
-install: 	
-
-
-	-@sudo apt install python3-tk -y  2> /dev/null || true
-	
-	-@sudo dnf install -y python3-tkinter 2> /dev/null || true
-	
-	-@sudo pacman -S tk -y 2> /dev/null || true && echo "install Luxarg (Y/n) ?"
-	
-	-@sudo yum install -y python3-tkinter 2> /dev/null || true
-	
-	-@sudo zypper in -y python-tk 2> /dev/null || true
-
-	-@pip3 install --upgrade pip
-	
-	-@sudo pip3 install virtualenv
-	
-	-@sudo pip3 install pyinstaller
-	
-	@rm -rf venv luxarg
-	
-	@virtualenv venv
-	
-	. ./venv/bin/activate;
-	
-	-@ pip install -Ur requirements.txt
+install: local
 
 	-@mkdir ~/.luxarg || true
 	
@@ -100,3 +75,29 @@ install:
 	
 	@rm luxarg
 
+local:
+
+	-@sudo apt install python3-tk -y  2> /dev/null || true
+	
+	-@sudo dnf install -y python3-tkinter 2> /dev/null || true
+	
+	-@sudo pacman -S tk -y 2> /dev/null || true && echo "install Luxarg (Y/n) ?"
+	
+	-@sudo yum install -y python3-tkinter 2> /dev/null || true
+	
+	-@sudo zypper in -y python-tk 2> /dev/null || true
+
+	-@pip3 install --upgrade pip
+	
+	-@sudo pip3 install virtualenv
+	
+	-@sudo pip3 install pyinstaller
+	
+	@rm -rf venv luxarg
+	
+	@virtualenv venv
+	
+	. ./venv/bin/activate;
+	
+	-@ pip install -Ur requirements.txt
+	./core.py
