@@ -111,5 +111,6 @@ You must install "pip" before installation
     pip.txt
 
 # local execute 
-    $ pip install -Ur requirements.txt
-    $ ./core.py
+    $ make local clean
+    # OR
+    $ make local
