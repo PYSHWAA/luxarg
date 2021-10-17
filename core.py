@@ -30,7 +30,7 @@ You should have received a copy of the GNU General Public License
 
 '''
 
-from os import path, getenv, stat
+from os import path, getenv
 from sys import argv, exit
 from tkinter import BOTH, RIGHT, SUNKEN, Tk, Text, Scrollbar,Label, Entry
 from libs.keys_actions import *
@@ -222,6 +222,7 @@ text_field.bind('<Control-minus>', lambda e : font_resizer(text_field, '-'))
 # delete all with CTRL + 0
 text_field.bind('<Control-0>', lambda e :text_field.delete('1.0', 'end'))
 
+
 # key binding for calc lines 
 text_field.bind('<Key>', lambda e: linenum(showline_stat))
 text_field.bind('<KP_Enter>', lambda e : text_field.insert('end', '\n'), linenum(showline_stat))
@@ -246,6 +247,10 @@ except:
 # DISABLE text box 
 text_field.configure(state='disabled')
 
+# tab setting
+
+# text field configuration
+
 text_field.config(bg='black', fg='white', 
                 relief=SUNKEN, 
                 spacing1=10,
@@ -253,13 +258,11 @@ text_field.config(bg='black', fg='white',
                 insertborderwidth=1,
                 padx=20,
                 pady=4,
-                font=('', font_size)
+                font=('', font_size),
                 )
 
 
-# text_field
 # configuring the scrollbar
 scrollbar.config(bg='black', command=text_field.yview)
-
 
 master.mainloop()
