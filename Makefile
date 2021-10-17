@@ -100,4 +100,4 @@ local:
 	. ./venv/bin/activate;
 	
 	-@ pip install -Ur requirements.txt
-	./core.py
+	
