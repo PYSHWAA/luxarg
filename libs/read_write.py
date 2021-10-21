@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
-
-''' 
-AMZY-0 (M.Amin Azimi .K) 
+''' AMZY-0 (M.Amin Azimi .K)
 Copyright (C) 2019-2021 luxarg AMZY-0 (M.Amin Azimi .K) and contributors
 
 Luxarg is free software: you can redistribute it and/or modify
@@ -34,79 +32,78 @@ from tkinter import messagebox
 from os import path
 
 def message(path_msg, text_msg):
-
-
+    ''' status message from IO UNIT '''
     if text_msg == 'saved !':
-        msg = messagebox.showinfo('%s'%text_msg, 
-        message='%s  %s' % (path_msg, text_msg))
-    
+        messagebox.showinfo('%s'%text_msg,
+        message='%s  %s' %(path_msg, text_msg))
+
     else:
-        msg = messagebox.showerror('%s'%text_msg, 
-        message='%s  %s' % (path_msg, text_msg))
+        messagebox.showerror('%s'%text_msg,
+        message='%s  %s' %(path_msg, text_msg))
 
 
 ####################################################
-# IO 
+# IO
 ####################################################
-# Input and Output UNIT 
-def io_luxarg(path_and_filename, text, io_mode, text_field, file_path):
-    
+def io_luxarg(path_and_filename, text, io_mode, textField):
+    ''' Input and Output UNIT '''
+
     # if ~/<*>.<txt/py/c/cpp/...>
     if path_and_filename[:2]=='~/':
-        
-        path_and_filename = path_and_filename.replace('~/', '%s/' % 
+
+        path_and_filename = path_and_filename.replace('~/', '%s/' %
         str(path.expanduser('~').strip()))
-        
-    # path_and_filename equal to EMPTY 
+
+    # path_and_filename equal to EMPTY
     if path_and_filename == '':
         path_and_filename = 'Field is empty ...!'
         message(path_and_filename, '')
-    
+
 
     elif path_and_filename == '~':
-        message(path_and_filename, ': Is directory (Directory is not readable)')   
+        message(path_and_filename, ': Is directory (Directory is not readable)')
 
     # if is directory :
     elif path.isdir(path_and_filename) or path_and_filename[-1] == '/':
-        # if not a file 
-        message(path_and_filename, ': Is directory (Directory is not readable)') 
-    
+        # if not a file
+        message(path_and_filename, ': Is directory (Directory is not readable)')
+
 
 
     elif io_mode == 'r':
-        # delete all the buffer and after open file 
-        text_field.delete('1.0', 'end')
+        # delete all the buffer and after open file
+        textField.delete('1.0', 'end')
 
 
 
         try:
             fin = open(path_and_filename, io_mode)
             readed =  fin.read()
-            text_field.insert('1.0', str(readed))
-            text_field.configure(state='disabled')
+            textField.insert('1.0', str(readed))
+            textField.configure(state='disabled')
             fin.close()
 
         except FileNotFoundError as error:
             message('', str(error)[10:])
 
         except OSError as error:
-                    message('', str(error)[10:])
+            message('', str(error)[10:])
 
-        
-        text_field.configure(state='disabled')
-    
+
+        textField.configure(state='disabled')
+
     # relational path for home
     elif io_mode=='w':
-        path_and_filename = path_and_filename.replace('~/','%s/'% 
+        path_and_filename = path_and_filename.replace('~/','%s/'%
         str(path.expanduser('~'))).strip()
-        
+
         try:
             fin = open(path_and_filename, io_mode)
             fin.write(text)
             message(path_and_filename, 'saved !')
             fin.close()
-        
+
         except OSError as error :
             message(path_and_filename, str(error)[10:])
 
-    return text_field.focus()
+    return textField.focus()

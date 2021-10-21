@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-''' 
-AMZY-0 (M.Amin Azimi .K) 
+'''
+AMZY-0 (M.Amin Azimi .K)
 Copyright (C) 2019-2021 luxarg AMZY-0 (M.Amin Azimi .K) and contributors
 
 Luxarg is free software: you can redistribute it and/or modify
@@ -32,14 +32,10 @@ You should have received a copy of the GNU General Public License
 
 from os import system, chdir, getenv
 print('...')
-chdir('%s/.luxarg/' % getenv('HOME')) 
+chdir('%s/.luxarg/' % getenv('HOME'))
 
 system('git reset FETCH_HEAD; git restore . ; git pull')
 
 system('make install clean')
 
 print('...')
-
-
-
-
