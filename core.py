@@ -29,10 +29,6 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 
 '''
-<<<<<<< HEAD
-=======
-
->>>>>>> 5a692874ef222eeee4c7fdb8959061b9d6b1ee17
 from os import path, getenv
 from sys import argv, exit
 from tkinter import BOTH, RIGHT, SUNKEN, Tk, Text, Scrollbar,Label, Entry, END
