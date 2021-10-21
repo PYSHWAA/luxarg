@@ -29,14 +29,18 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 
 '''
+<<<<<<< HEAD
+=======
 
+>>>>>>> 5a692874ef222eeee4c7fdb8959061b9d6b1ee17
 from os import path, getenv
 from sys import argv, exit
-from tkinter import BOTH, RIGHT, SUNKEN, Tk, Text, Scrollbar,Label, Entry
+from tkinter import BOTH, RIGHT, SUNKEN, Tk, Text, Scrollbar,Label, Entry, END
 from libs.keys_actions import *
 from PIL import Image, ImageTk
 from libs.read_write import message
 from libs.file_from_args import open_mode_by_arg
+from libs.counter import linenum
 
 help_contents = '''
 
@@ -83,6 +87,7 @@ showline_stat.pack(fill='y')
 
 show_status.pack(fill='x')
 
+    
 # for storing all the file_path variable value
 # global file_path
 file_path = Entry(master, font=('', 13))
@@ -106,13 +111,6 @@ scrollbar.pack(side=RIGHT, fill='y')
 text_field = Text(master, yscrollcommand=scrollbar.set, undo=True)
 text_field.pack(expand=True, fill=BOTH)
 text_field.focus()
-
-# line number 
-def linenum(showline_stat):
-
-    lines = len(text_field.get('1.0', 'end').split('\n'))-1
-    showline_stat['text'] = ' %s line(s) ' % lines
-
 
 
 if argv[0] and len(argv) ==1:
@@ -224,9 +222,11 @@ text_field.bind('<Control-0>', lambda e :text_field.delete('1.0', 'end'))
 
 
 # key binding for calc lines 
-text_field.bind('<Key>', lambda e: linenum(showline_stat))
-text_field.bind('<KP_Enter>', lambda e : text_field.insert('end', '\n'), linenum(showline_stat))
-text_field.bind('<Return>', lambda e : linenum(showline_stat))
+text_field.bind('<BackSpace>', lambda e: linenum(text_field, showline_stat))
+text_field.bind('<Return>', lambda e : linenum(text_field, showline_stat))
+text_field.bind('<KP_Enter>', lambda e : text_field.insert('end', '\n'), 
+linenum(text_field, showline_stat))
+text_field.bind('<KeyRelease>', lambda e: linenum(text_field, showline_stat))
 
 
 
@@ -236,7 +236,7 @@ try:
         open_mode_by_arg(text_field, show_status, 'r', argv[1])
         file_path.delete(0, 'end')
         file_path.insert(0, str(path.expanduser(argv[1])))
-        linenum(showline_stat)
+        linenum(text_field, showline_stat)
     # if pass is not true 
     except OSError as error:
         message('', str(error)[10:])
