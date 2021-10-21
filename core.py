@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-''' 
-AMZY-0 (M.Amin Azimi .K) 
+'''
+AMZY-0 (M.Amin Azimi .K)
 Copyright (C) 2019-2021 luxarg AMZY-0 (M.Amin Azimi .K) and contributors
 
 Luxarg is free software: you can redistribute it and/or modify
@@ -31,7 +31,7 @@ You should have received a copy of the GNU General Public License
 '''
 from os import path, getenv
 from sys import argv, exit
-from tkinter import BOTH, RIGHT, SUNKEN, Tk, Text, Scrollbar,Label, Entry, END
+from tkinter import BOTH, RIGHT, SUNKEN, Tk, Text, Scrollbar,Label, Entry
 from libs.keys_actions import *
 from PIL import Image, ImageTk
 from libs.read_write import message
@@ -56,11 +56,11 @@ REDO        : <Ctrl + Shift + z>
 HELP   CLI  : luxarg <-h/--help>
 ZOOM IN     : <Ctrl + equal(=)>
 ZOOM OUT    : <Ctrl + minus(-)>
-    
+
 '''
 
 
-        
+
 
 master = Tk()
 master.geometry("700x700")
@@ -68,7 +68,7 @@ master.title("LuxarG")
 master.minsize(height=500, width=500)
 master.config(bg='black')
 
-show_status = Label() 
+show_status = Label()
 show_status['text']='__STOP_MODE__\nHELP MODE : <F4>'
 show_status['bg']='black'
 show_status['fg']='white'
@@ -83,13 +83,13 @@ showline_stat.pack(fill='y')
 
 show_status.pack(fill='x')
 
-    
+
 # for storing all the file_path variable value
 # global file_path
 file_path = Entry(master, font=('', 13))
 
-# "file_path" configure : 
-file_path.configure(bg='black', 
+# "file_path" configure :
+file_path.configure(bg='black',
     fg='white',
     insertbackground='yellow',
 )
@@ -103,7 +103,7 @@ scrollbar = Scrollbar(master)
 # packing scrollbar
 scrollbar.pack(side=RIGHT, fill='y')
 
-# definition a text_field 
+# definition a text_field
 text_field = Text(master, yscrollcommand=scrollbar.set, undo=True)
 text_field.pack(expand=True, fill=BOTH)
 text_field.focus()
@@ -119,41 +119,40 @@ elif argv[1] == '-h' or argv[1]=='--help':
 
 try:
     try:
-        # try to set logo 
+        # try to set logo
         img = ImageTk.PhotoImage(Image.open('%s/.luxarg/icon/luxarg.png'%getenv('HOME')))
         master.iconphoto(False, img)
 
     except:
-        # local loading (LOGO) 
+        # local loading (LOGO)
         img = ImageTk.PhotoImage(Image.open('./icon/luxarg.png'))
         master.iconphoto(False, img)
-    
+
 except:
     pass
 
 # set font size to 20
 font_size = 20
 
-#font resizer 
 def font_resizer(component, minesOrPlus):
-    global font_size 
-    
-  
-    if minesOrPlus == '+' and font_size <= 100: 
+    '''font resizer'''
+    global font_size
+
+
+    if minesOrPlus == '+' and font_size <= 100:
         component['font'] = ('', font_size + 1)
         font_size += 1
-    elif minesOrPlus == '-' and font_size >= 10 : 
+    elif minesOrPlus == '-' and font_size >= 10 :
         component['font'] = ('', font_size - 1)
         font_size -= 1
 
         return component['font']
-    
-    else:
-        return
+
+
 
 #####################################################
 #                                                   #
-#                  key binding                      #   
+#                  key binding                      #
 #                                                   #
 #####################################################
 
@@ -207,7 +206,7 @@ text_field.bind('<Control-Z>', lambda e : text_field.edit_undo)
 # REDO
 text_field.bind('<Control-Shift-Z>', lambda e : text_field.edit_redo)
 
-# zoom control by CTRL + Mouse scroll 
+# zoom control by CTRL + Mouse scroll
 # text_field.bind('<Control-Button-4>', lambda e : font_resizer(text_field, '+'))
 # text_field.bind('<Control-Button-5>', lambda e : font_resizer(text_field, '-'))
 text_field.bind('<Control-equal>', lambda e : font_resizer(text_field, '+'))
@@ -217,10 +216,10 @@ text_field.bind('<Control-minus>', lambda e : font_resizer(text_field, '-'))
 text_field.bind('<Control-0>', lambda e :text_field.delete('1.0', 'end'))
 
 
-# key binding for calc lines 
+# key binding for calc lines
 text_field.bind('<BackSpace>', lambda e: linenum(text_field, showline_stat))
 text_field.bind('<Return>', lambda e : linenum(text_field, showline_stat))
-text_field.bind('<KP_Enter>', lambda e : text_field.insert('end', '\n'), 
+text_field.bind('<KP_Enter>', lambda e : text_field.insert('end', '\n'),
 linenum(text_field, showline_stat))
 text_field.bind('<KeyRelease>', lambda e: linenum(text_field, showline_stat))
 
@@ -233,22 +232,22 @@ try:
         file_path.delete(0, 'end')
         file_path.insert(0, str(path.expanduser(argv[1])))
         linenum(text_field, showline_stat)
-    # if pass is not true 
+    # if pass is not true
     except OSError as error:
         message('', str(error)[10:])
         text_field.focus()
 except:
     pass
 
-# DISABLE text box 
+# DISABLE text box
 text_field.configure(state='disabled')
 
 # tab setting
 
 # text field configuration
 
-text_field.config(bg='black', fg='white', 
-                relief=SUNKEN, 
+text_field.config(bg='black', fg='white',
+                relief=SUNKEN,
                 spacing1=10,
                 insertbackground='yellow',
                 insertborderwidth=1,

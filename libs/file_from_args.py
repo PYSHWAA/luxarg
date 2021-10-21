@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-''' 
-AMZY-0 (M.Amin Azimi .K) 
+'''
+AMZY-0 (M.Amin Azimi .K)
 Copyright (C) 2019-2021 luxarg AMZY-0 (M.Amin Azimi .K) and contributors
 
 Luxarg is free software: you can redistribute it and/or modify
@@ -33,17 +33,17 @@ You should have received a copy of the GNU General Public License
 def open_mode_by_arg(text_field, show_status, io_mode, path_arg):
 
     text_field.configure(stat='normal')
-    
-    # open file with read mode 
+
+    # open file with read mode
     fin = open(path_arg, io_mode)
-    
-    #insert from file 
+
+    #insert from file
     text_field.delete('1.0', 'end')
     text_field.insert('1.0', fin.read())
-    
+
     #change status
     show_status['text']='__OPEN_MODE__\nHELP MODE : <F4>'
     text_field.configure(state='disabled')
 
-    # close the file 
+    # close the file
     fin.close()
