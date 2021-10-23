@@ -111,6 +111,6 @@ You must install "pip" before installation
     pip.txt
 
 # local execute 
-    $ make local clean && python<3.SUB_VERSION>
+    $ make local clean && python<3.SUB_VERSION> core.py
     # OR
-    $ make local && python<3.SUB_VERSION>
+    $ make local && python<3.SUB_VERSION> core.py
