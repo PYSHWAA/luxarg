@@ -89,7 +89,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # INSTALLATION
 
-You must install "pip" before installation   
+You must install "pip" before this step ...   
 
 
     $ make 
