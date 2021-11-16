@@ -76,14 +76,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     HELP   MODE : <F4>
     DELETE ALL  : <Ctrl + 0>
     SELECT ALL  : <Ctrl + />
-    CORSUR RIGHT: <Ctrl + f> move the cursor forward one space.
-    CORSUR LEFT : <Ctrl + b> move the cursor backward one space.
+    CURSOR RIGHT: <Ctrl + f> move the cursor forward one space.
+    CURSOR LEFT : <Ctrl + b> move the cursor backward one space.
     Copy        : <Ctrl + c>
     Paste       : <Ctrl + v>
     Cut         : <Ctrl + w>
     UNDO        : <Ctrl + z>
     REDO        : <Ctrl + Shift + z>
-    HELP   CLI  : luxarg <-h/--help>
+    HELP CLI    : luxarg <-h/--help>
     ZOOM IN     : <Ctrl + equal(=)>
     ZOOM OUT    : <Ctrl + minus(-)>
 
