@@ -30,13 +30,14 @@ You should have received a copy of the GNU General Public License
 
 '''
 from os import path, getenv
-from sys import argv, exit
+import sys
 from tkinter import BOTH, RIGHT, SUNKEN, Tk, Text, Scrollbar,Label, Entry
-from libs.keys_actions import *
 from PIL import Image, ImageTk
-from libs.read_write import message
-from libs.file_from_args import open_mode_by_arg
-from libs.counter import linenum
+from libs import keys_actions
+from libs import read_write
+from libs import file_from_args
+from libs import counter
+from libs import bg_fg_color
 
 help_contents = '''
 
@@ -46,14 +47,14 @@ OPEN   MODE : <F3>
 HELP   MODE : <F4>
 DELETE ALL  : <Ctrl + 0>
 SELECT ALL  : <Ctrl + />
-CURSOR RIGHT: <Ctrl + f> move the cursor forward one space.
-CURSOR LEFT : <Ctrl + b> move the cursor backward one space.
+CORSUR RIGHT: <Ctrl + f> move the cursor forward one space.
+CORSUR LEFT : <Ctrl + b> move the cursor backward one space.
 Copy        : <Ctrl + c>
 Paste       : <Ctrl + v>
 Cut         : <Ctrl + w>
 UNDO        : <Ctrl + z>
 REDO        : <Ctrl + Shift + z>
-HELP CLI    : luxarg <-h/--help>
+HELP   CLI  : luxarg <-h/--help>
 ZOOM IN     : <Ctrl + equal(=)>
 ZOOM OUT    : <Ctrl + minus(-)>
 
@@ -61,203 +62,214 @@ ZOOM OUT    : <Ctrl + minus(-)>
 
 
 
+def main():
+    ''' The Main function (entry point) '''
+    master = Tk()
+    master.geometry("700x700")
+    master.title("LuxarG")
+    master.minsize(height=500, width=500)
+    master.config(bg=bg_fg_color.bg)
 
-master = Tk()
-master.geometry("700x700")
-master.title("LuxarG")
-master.minsize(height=500, width=500)
-master.config(bg='black')
+    show_status = Label()
+    show_status['text'] = '__STOP_MODE__\nHELP MODE : <F4>'
+    show_status['bg'] = bg_fg_color.bg
+    show_status['fg'] = bg_fg_color.fg
+    show_status['font'] = ('', 13)
 
-show_status = Label()
-show_status['text']='__STOP_MODE__\nHELP MODE : <F4>'
-show_status['bg']='black'
-show_status['fg']='white'
-show_status['font']=('', 13)
-
-#for line status
-showline_stat = Label()
-showline_stat['bg']='black'
-showline_stat['fg']='white'
-showline_stat['font']  = ('', 12)
-showline_stat.pack(fill='y')
-
-show_status.pack(fill='x')
+    #for line status
+    showline_stat = Label()
+    showline_stat['bg']=bg_fg_color.bg
+    showline_stat['fg']=bg_fg_color.fg
+    showline_stat['font']  = ('', 12)
 
 
-# for storing all the file_path variable value
-# global file_path
-file_path = Entry(master, font=('', 13))
+    # load statusbar before all components
+    showline_stat.pack(fill=BOTH)
+    show_status.pack(fill='x')
 
-# "file_path" configure :
-file_path.configure(bg='black',
-    fg='white',
-    insertbackground='yellow',
-)
+    # for storing all the file_path variable value
+    # global file_path
+    file_path = Entry(master, font=('', 13))
 
-file_path.insert(0, 'file path example : /tmp/tmp')
-file_path.pack(fill=BOTH)
+    # "file_path" configure :
+    file_path.configure(bg=bg_fg_color.bg,
+        fg=bg_fg_color.fg,
+        insertbackground='yellow',
+    )
 
-# adding scrollbar
-scrollbar = Scrollbar(master)
+    file_path.insert(0, 'file path example : /tmp/tmp')
+    file_path.pack(fill=BOTH)
 
-# packing scrollbar
-scrollbar.pack(side=RIGHT, fill='y')
+    # adding scrollbar
+    scrollbar = Scrollbar(master)
 
-# definition a text_field
-text_field = Text(master, yscrollcommand=scrollbar.set, undo=True)
-text_field.pack(expand=True, fill=BOTH)
-text_field.focus()
+    # packing scrollbar
+    scrollbar.pack(side=RIGHT, fill='y')
+
+    # definition a text_field
+    text_field = Text(master, yscrollcommand=scrollbar.set, undo=True)
+    text_field.pack(expand=True, fill=BOTH)
+    text_field.focus()
 
 
-if argv[0] and len(argv) ==1:
-    pass
-elif argv[1] == '-h' or argv[1]=='--help':
-    print(help_contents)
+    if sys.argv[0] and len(sys.argv) ==1:
+        pass
+    elif sys.argv[1] == '-h' or sys.argv[1]=='--help':
+        print(help_contents)
 
-    master.forget(master)
-    exit()
+        master.forget(master)
+        sys.exit()
 
-try:
     try:
-        # try to set logo
-        img = ImageTk.PhotoImage(Image.open('%s/.luxarg/icon/luxarg.png'%getenv('HOME')))
-        master.iconphoto(False, img)
+        try:
+            # try to set logo
+            img = ImageTk.PhotoImage(Image.open('%s/.luxarg/icon/luxarg.png'%getenv('HOME')))
+            master.iconphoto(False, img)
+
+        except:
+            # local loading (LOGO)
+            img = ImageTk.PhotoImage(Image.open('./icon/luxarg.png'))
+            master.iconphoto(False, img)
 
     except:
-        # local loading (LOGO)
-        img = ImageTk.PhotoImage(Image.open('./icon/luxarg.png'))
-        master.iconphoto(False, img)
+        print('icon has not been loaded')
 
-except:
-    pass
-
-# set font size to 20
-font_size = 20
-
-def font_resizer(component, minesOrPlus):
-    '''font resizer'''
+    # set font size to 20
     global font_size
+    font_size = 20
 
+    def font_resizer(component, mines_or_plus):
+        '''font resizer'''
 
-    if minesOrPlus == '+' and font_size <= 100:
-        component['font'] = ('', font_size + 1)
-        font_size += 1
-    elif minesOrPlus == '-' and font_size >= 10 :
-        component['font'] = ('', font_size - 1)
-        font_size -= 1
+        global font_size
+
+        if mines_or_plus == '+' and font_size <= 100:
+            component['font'] = ('', font_size + 1)
+            font_size += 1
+        elif mines_or_plus == '-' and font_size >= 10 :
+            component['font'] = ('', font_size - 1)
+            font_size -= 1
 
         return component['font']
 
 
-
-#####################################################
-#                                                   #
-#                  key binding                      #
-#                                                   #
-#####################################################
-
+    #####################################################
+    #                                                   #
+    #                  key binding                      #
+    #                                                   #
+    #####################################################
 
 
-# INSERT MODE (binding F1)
-text_field.bind('<F1>', lambda e :  insert_mode(
-    text_field,
-    show_status,
-    '__INSERT_MODE__'
+
+    # INSERT MODE (binding F1)
+    text_field.bind('<F1>', lambda e :  keys_actions.insert_mode(
+        text_field,
+        show_status,
+        '__INSERT_MODE__'
+        )
     )
-)
-# STOP MODE (binding ESC)
-text_field.bind('<Escape>', lambda e :  stop_mode(
-    text_field,
-    show_status,
-    '__STOP_MODE__'
+    # STOP MODE (binding ESC)
+    text_field.bind('<Escape>', lambda e :  keys_actions.stop_mode(
+        text_field,
+        show_status,
+        '__STOP_MODE__'
+        )
     )
-)
 
-# SAVE MODE (binding F2)
-text_field.bind('<F2>', lambda e :  save_mode(
-    text_field,
-    show_status,
-    '__SAVE_MODE__',
-    file_path
+    # SAVE MODE (binding F2)
+    text_field.bind('<F2>', lambda e :  keys_actions.save_mode(
+        text_field,
+        show_status,
+        '__SAVE_MODE__',
+        file_path
+        )
     )
-)
 
-# OPEN MODE (binding F3)
-text_field.bind('<F3>', lambda e: open_mode(
-    text_field,
-    show_status,
-    '__OPEN_MODE__',
-    file_path
+    # OPEN MODE (binding F3)
+    text_field.bind('<F3>', lambda e: keys_actions.open_mode(
+        text_field,
+        show_status,
+        '__OPEN_MODE__',
+        file_path
+        )
     )
-)
 
-# HELP MODE (binding F4)
-text_field.bind('<F4>', lambda e: help_mode(
-    master,
-    show_status,
-    '__HELP_MODE__',
-    help_contents
+    # HELP MODE (binding F4)
+    text_field.bind('<F4>', lambda e: keys_actions.help_mode(
+        master,
+        show_status,
+        '__HELP_MODE__',
+        help_contents
+        )
     )
-)
 
-# UNDO
-text_field.bind('<Control-Z>', lambda e : text_field.edit_undo)
+    # UNDO
+    text_field.bind('<Control-Z>', lambda e : text_field.edit_undo)
 
-# REDO
-text_field.bind('<Control-Shift-Z>', lambda e : text_field.edit_redo)
+    # REDO
+    text_field.bind('<Control-Shift-Z>', lambda e : text_field.edit_redo)
 
-# zoom control by CTRL + Mouse scroll
-# text_field.bind('<Control-Button-4>', lambda e : font_resizer(text_field, '+'))
-# text_field.bind('<Control-Button-5>', lambda e : font_resizer(text_field, '-'))
-text_field.bind('<Control-equal>', lambda e : font_resizer(text_field, '+'))
-text_field.bind('<Control-minus>', lambda e : font_resizer(text_field, '-'))
+    # zoom control by CTRL + Mouse scroll
+    # text_field.bind('<Control-Button-4>', lambda e : font_resizer(text_field, '+'))
+    # text_field.bind('<Control-Button-5>', lambda e : font_resizer(text_field, '-'))
+    text_field.bind('<Control-equal>', lambda e : font_resizer(text_field, '+'))
+    text_field.bind('<Control-minus>', lambda e : font_resizer(text_field, '-'))
 
-# delete all with CTRL + 0
-text_field.bind('<Control-0>', lambda e :text_field.delete('1.0', 'end'))
-
-
-# key binding for calc lines
-text_field.bind('<BackSpace>', lambda e: linenum(text_field, showline_stat))
-text_field.bind('<Return>', lambda e : linenum(text_field, showline_stat))
-text_field.bind('<KP_Enter>', lambda e : text_field.insert('end', '\n'),
-linenum(text_field, showline_stat))
-text_field.bind('<KeyRelease>', lambda e: linenum(text_field, showline_stat))
+    # delete all with CTRL + 0
+    text_field.bind('<Control-0>', lambda e :text_field.delete('1.0', 'end'))
 
 
+    # key binding for calc lines
+    text_field.bind('<BackSpace>', lambda e: counter.linenum(text_field, showline_stat))
+    text_field.bind('<Return>', lambda e : counter.linenum(text_field, showline_stat))
+    text_field.bind('<KP_Enter>', lambda e : text_field.insert('end', '\n'),
+    counter.linenum(text_field, showline_stat))
+    text_field.bind('<KeyRelease>', lambda e: counter.linenum(text_field, showline_stat))
 
-try:
-    # try open file from the arg1 (like this : $ luxarg /tmp/tmp)
+
+    # key binding for exit and confirm that
+    text_field.bind('<Control-F4>', lambda e : quit())
+    text_field.bind('<Alt-F4>', lambda e : print())
+
     try:
-        open_mode_by_arg(text_field, show_status, 'r', argv[1])
-        file_path.delete(0, 'end')
-        file_path.insert(0, str(path.expanduser(argv[1])))
-        linenum(text_field, showline_stat)
-    # if pass is not true
-    except OSError as error:
-        message('', str(error)[10:])
-        text_field.focus()
-except:
-    pass
+        # try open file from the arg1 (like this : $ luxarg /tmp/tmp)
+        try:
+            file_from_args.open_mode_by_arg(text_field, show_status, 'r', sys.argv[1])
+            file_path.delete(0, 'end')
+            file_path.insert(0, str(path.expanduser(sys.argv[1])))
+            counter.linenum(text_field, showline_stat)
+        # if pass is not true
+        except OSError as error:
+            read_write.message('', str(error)[10:])
+            text_field.focus()
+    except:
+        pass
 
-# DISABLE text box
-text_field.configure(state='disabled')
+    # DISABLE text box
+    text_field.configure(state='disabled')
 
-# tab setting
+    # tab setting
 
-# text field configuration
+    # text field configuration
 
-text_field.config(bg='black', fg='white',
-                relief=SUNKEN,
-                spacing1=10,
-                insertbackground='yellow',
-                insertborderwidth=1,
-                padx=20,
-                pady=4,
-                font=('', font_size),
-                )
+    text_field.config(bg=bg_fg_color.bg, fg=bg_fg_color.fg,
+                    relief=SUNKEN,
+                    spacing1=10,
+                    insertbackground=bg_fg_color.fg,
+                    insertborderwidth=1,
+                    insertwidth=5,
+                    width=20,
+                    padx=20,
+                    pady=4,
+                    font=('', font_size),
+                    )
 
 
-# configuring the scrollbar
-scrollbar.config(bg='black', command=text_field.yview)
+    # configuring the scrollbar
+    scrollbar.config(bg=bg_fg_color.bg, command=text_field.yview)
 
-master.mainloop()
+    master.mainloop()
+
+
+if __name__ == '__main__':
+    main()
