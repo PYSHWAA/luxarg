@@ -27,8 +27,10 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 You should have received a copy of the GNU General Public License'''
+
 from tkinter import Toplevel, Label
-from . import read_write
+from libs import read_write
+from libs import bg_fg_color
 
 file_mode = '\nExample : /tmp/tmp\n<ESC> for exit'
 
@@ -108,14 +110,14 @@ def open_mode(text_field, show_status, status, file_path):
 ###############################################################
 def help_mode(master, show_status, status, help_contents):
     ''' help mode '''
-    helpWindow=Toplevel(master)
-    helpWindow.title(' LUXARG => HELP ')
-    helpWindow.maxsize()
+    help_window=Toplevel(master)
+    help_window.title(' LUXARG => HELP ')
+    help_window.maxsize()
 
 
-    helpLabel = Label(helpWindow, text=help_contents, font=('', 17))
-    helpWindow.config(bg='black')
-    helpLabel.config(background='black', foreground='white')
-    helpLabel.pack()
+    help_label = Label(help_window, text=help_contents, font=('', 17))
+    help_window.config(bg=bg_fg_color.bg)
+    help_label.config(background=bg_fg_color.bg, foreground=bg_fg_color.fg)
+    help_label.pack()
     show_status['text'] = '%s\nHELP MODE : <F4> ' % status
     return show_status

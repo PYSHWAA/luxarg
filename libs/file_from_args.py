@@ -31,7 +31,7 @@ You should have received a copy of the GNU General Public License
 '''
 
 def open_mode_by_arg(text_field, show_status, io_mode, path_arg):
-
+    '''$ luxarg file_path/filename.txt'''
     text_field.configure(stat='normal')
 
     # open file with read mode
