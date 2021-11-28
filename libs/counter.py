@@ -31,7 +31,7 @@ You should have received a copy of the GNU General Public License
 '''
 # line number
 def linenum(text_field, showline_stat):
-
+    '''Line status and chars COUNTER'''
     chars = len(text_field.get('1.0', 'end'))-1
     showline_stat['text'] = '%s char(s) | ' % chars
 
