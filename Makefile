@@ -81,7 +81,7 @@ local:
 	
 	-@sudo dnf install -y python3-tkinter 2> /dev/null || true
 	
-	-@sudo pacman -S tk -y 2> /dev/null || true && echo "install Luxarg (Y/n) ?"
+	-@sudo pacman -S tk -y 2> /dev/null || true
 	
 	-@sudo yum install -y python3-tkinter 2> /dev/null || true
 	
