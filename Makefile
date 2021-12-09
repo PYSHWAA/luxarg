@@ -42,7 +42,7 @@ install: local
 	
 	-@sudo dnf install -y python3-tkinter 2> /dev/null || true
 	
-	-@sudo pacman -S tk -y 2> /dev/null || true
+	-@sudo pacman -Syu tk --noconfirm 2> /dev/null || true
 	
 	-@sudo yum install -y python3-tkinter 2> /dev/null || true
 	
@@ -95,13 +95,5 @@ install: local
 	
 	@rm luxarg
 
-local:
-	
-	-@pip3 install -U pip
 
-	-@pip3 install virtualenv
-
-	-@pip3 install pyinstaller
-
-	-@pip install -Ur requirements.txt
 	
