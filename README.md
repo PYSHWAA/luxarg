@@ -110,7 +110,25 @@ You must install "pip" before this step ...
 # Install pip
     pip.txt
 
-# local execute 
-    $ make local clean && python<3.SUB_VERSION> core.py
-    # OR
-    $ make local && python<3.SUB_VERSION> core.py
+# local build and execute
+
+    ## INSTALL PIP BEFORE THIS OPERATIONS (for installation PIP look at 'pip.txt')
+
+    ### Ubuntu & Debian
+        $ sudo apt install python3-tk -y  
+	
+    ### Fedora
+	    $ sudo dnf install -y python3-tkinter 
+
+    ### Arch
+	    $ sudo pacman -S tk 
+	
+    ### CentOS
+	    $ sudo yum install -y python3-tkinter 
+
+    ### OpenSUSE
+	    $ sudo zypper in -y python-tk 
+    
+    $ pip install -Ur requirements.txt
+        
+    $ python<3.SUB_VERSION> core.py
