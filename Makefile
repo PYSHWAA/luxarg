@@ -37,7 +37,7 @@ clean:
 	-@rm -rf __pycache__/ build/ core.spec dist/ luxarg.spec 
 
 
-install: local
+install:
 	-@sudo apt install python3-tk -y  2> /dev/null || true
 	
 	-@sudo dnf install -y python3-tkinter 2> /dev/null || true
