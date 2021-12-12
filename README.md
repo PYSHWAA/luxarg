@@ -115,7 +115,7 @@ You must install "pip" before this step ...
 
 
 
-### INSTALL PIP BEFORE THIS OPERATIONS (for installation PIP look at 'pip.txt')
+### INSTALL PIP BEFORE THIS OPERATIONS
 ****
 
 
