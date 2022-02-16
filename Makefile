@@ -52,8 +52,7 @@ install:
 	
 	-@sudo pip3 install virtualenv
 	
-	-@sudo pip3 install pyinstaller
-	-@sudo pip3 install pillow 
+	-@sudo pip install -r requirements.txt && pip install -r requirements.txt 
 	
 	@rm -rf venv luxarg
 	
