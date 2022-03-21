@@ -32,6 +32,7 @@ from tkinter import Toplevel, Label
 from libs import read_write
 from libs import bg_fg_color
 
+########-#######################################################
 file_mode = '\nExample : /tmp/tmp\n<ESC> for exit'
 
 ###############################################################
