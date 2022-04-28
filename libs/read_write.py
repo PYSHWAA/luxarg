@@ -82,6 +82,9 @@ def io_luxarg(path_and_filename, text, io_mode, text_field):
                 text_field.insert('1.0', str(readed))
                 text_field.configure(state='disabled')
 
+        except UnicodeDecodeError as unicode:
+            message(path_and_filename, str(unicode))
+
         except FileNotFoundError as error:
             message('', str(error)[10:])
 
@@ -102,7 +105,9 @@ def io_luxarg(path_and_filename, text, io_mode, text_field):
             message(path_and_filename, 'saved !')
             fin.close()
 
+        
         except OSError as error :
             message(path_and_filename, str(error)[10:])
+        
 
     return text_field.focus()
