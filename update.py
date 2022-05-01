@@ -34,7 +34,7 @@ from os import system, chdir
 
 print('...')
 chdir('/opt/luxarg')
-system('git reset FETCH_HEAD; git restore . ; git pull')
+system('sudo git reset FETCH_HEAD;sudo git restore . ;sudo git pull')
 
 system('make install')
 
