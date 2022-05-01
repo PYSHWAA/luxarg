@@ -33,7 +33,8 @@ SHELL = bash
 .DEFAULT_GOAL := install
 
 install:
-	-@sudo rm -rf ~/.luxarg /usr/share/luxarg
+	-@sudo rm -rf ~/.luxarg /usr/share/luxarg /opt/luxarg/*
+	
 	-@sudo apt install python3-tk -y  2> /dev/null || true
 	
 	-@sudo dnf install -y python3-tkinter 2> /dev/null || true
@@ -71,7 +72,7 @@ install:
 	@sudo chmod 755 luxarg
 	
 	-@sudo cp luxarg /usr/bin/
-	
+	-@sudo rm ./luxarg
 	-@sudo ln -s /opt/luxarg/update.py /usr/bin/luxarg-update
 	
 
