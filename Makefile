@@ -33,7 +33,7 @@ SHELL = bash
 .DEFAULT_GOAL := install
 
 update:
-	@sudo git reset FETCH_HEAD
+	@sudo git reset HEAD
 	@sudo git restore .
 	@sudo git pull
 
