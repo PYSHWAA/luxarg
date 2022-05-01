@@ -32,12 +32,8 @@ SHELL = bash
 
 .DEFAULT_GOAL := install
 
-
-clean: 
-	-@rm -rf __pycache__/ build/ core.spec dist/ luxarg.spec 
-
-
 install:
+	-@sudo rm -rf ~/.luxarg /usr/share/luxarg
 	-@sudo apt install python3-tk -y  2> /dev/null || true
 	
 	-@sudo dnf install -y python3-tkinter 2> /dev/null || true
@@ -49,28 +45,15 @@ install:
 	-@sudo zypper in -y python-tk 2> /dev/null || true
 
 	-@pip3 install -U pip
-	
-	-@sudo pip3 install virtualenv
-	
-	-@sudo pip install -r requirements.txt && pip install -r requirements.txt 
-	
-	@rm -rf venv luxarg
-	
-	@virtualenv venv
-	
-	. ./venv/bin/activate;
-	-@mkdir ~/.luxarg || true
-	
-	-@cp -rf .  ~/.luxarg/
-	
-	@pyinstaller -w --onedir  --name 'luxarg'  --hidden-import='PIL._tkinter_finder' -i "./icon/luxarg.png"  core.py
+		
+	-@pip install -r requirements.txt 
+		
+	-@sudo mkdir -p /opt/luxarg
 
-	-@mv ./dist/luxarg . || true
-	
+	-@sudo cp -rf . /opt/luxarg
+		
 	-@sudo rm -f /usr/bin/luxarg 
-	
-	-@sudo rm -rf /usr/share/luxarg
-	
+		
 	-@sudo unlink /usr/bin/luxarg-update 2> /dev/null;
     
 	-@sudo cp -rf ./xdg/luxarg.desktop /usr/share/applications
@@ -82,18 +65,15 @@ install:
 	-@sudo cp -rf ./icon/luxarg.png /usr/share/icons/hicolor/256x256/apps/
     
 	-@sudo cp -rf ./icon/luxarg.png /usr/share/icons/
-	
-	-@sudo cp -rf luxarg/ /usr/share && rm -rf luxarg/
-	
-	-@echo "exec /usr/share/luxarg/luxarg \$$1" > luxarg 
+		
+	-@echo "exec /opt/luxarg/core.py \$$1" > luxarg 
 	
 	@sudo chmod 755 luxarg
 	
 	-@sudo cp luxarg /usr/bin/
 	
-	-@sudo ln -s ~/.luxarg/update.py /usr/bin/luxarg-update
+	-@sudo ln -s /opt/luxarg/update.py /usr/bin/luxarg-update
 	
-	@rm luxarg
 
 
 	
