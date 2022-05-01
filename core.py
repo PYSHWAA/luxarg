@@ -123,7 +123,7 @@ def main():
     try:
         try:
             # try to set logo
-            img = ImageTk.PhotoImage(Image.open('%s/.luxarg/icon/luxarg.png'%getenv('HOME')))
+            img = ImageTk.PhotoImage(Image.open('/opt/luxarg/icon/luxarg.png'))
             master.iconphoto(False, img)
 
         except:
