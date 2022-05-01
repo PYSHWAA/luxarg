@@ -32,10 +32,9 @@ You should have received a copy of the GNU General Public License
 
 from os import system, chdir, getenv
 print('...')
-chdir('%s/.luxarg/' % getenv('HOME'))
 
 system('git reset FETCH_HEAD; git restore . ; git pull')
 
-system('make install clean')
+system('make install')
 
 print('...')
