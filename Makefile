@@ -51,7 +51,7 @@ install:
 		
 	-@sudo mkdir -p /opt/luxarg
 
-	-@sudo cp -rf . /opt/luxarg
+	-@sudo cp -rf . .* /opt/luxarg
 		
 	-@sudo rm -f /usr/bin/luxarg 
 		
