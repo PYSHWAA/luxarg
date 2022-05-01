@@ -33,9 +33,9 @@ You should have received a copy of the GNU General Public License
 from os import system, chdir
 
 print('...')
-chdir('/opt/luxarg')
-system('sudo git reset FETCH_HEAD;sudo git restore . ;sudo git pull')
 
-system('make install')
+chdir('/opt/luxarg')
+system('pwd')
+system('make update')
 
 print('...')
