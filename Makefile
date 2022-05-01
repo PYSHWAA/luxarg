@@ -51,7 +51,7 @@ install:
 		
 	-@sudo mkdir -p /opt/luxarg
 
-	-@sudo cp -rf . .* /opt/luxarg
+	-@sudo cp -rf . .git .gitignore /opt/luxarg
 		
 	-@sudo rm -f /usr/bin/luxarg 
 		
@@ -74,7 +74,3 @@ install:
 	-@sudo cp luxarg /usr/bin/
 	-@sudo rm ./luxarg
 	-@sudo ln -s /opt/luxarg/update.py /usr/bin/luxarg-update
-	
-
-
-	
