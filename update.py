@@ -30,9 +30,10 @@ You should have received a copy of the GNU General Public License
 
 '''
 
-from os import system, chdir, getenv
-print('...')
+from os import system, chdir
 
+print('...')
+chdir('/opt/luxarg')
 system('git reset FETCH_HEAD; git restore . ; git pull')
 
 system('make install')
