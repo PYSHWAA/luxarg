@@ -54,7 +54,7 @@ install:
 		
 	-@sudo pip3 install -r requirements.txt && pip3 install -r requirements.txt 
 		
-	-@sudo mkdir -p /opt/luxarg
+	-@sudo mkdir -p /opt/luxarg 2> /dev/null 
 
 	-@sudo cp -rf . ./.git ./.gitignore /opt/luxarg 2> /dev/null
 		
@@ -72,7 +72,7 @@ install:
     
 	-@sudo cp -rf `pwd`/icon/luxarg.png /usr/share/icons/
 		
-	-@echo "exec /opt/luxarg/core.py \$$1" > luxarg 
+	-@sudo echo "exec /opt/luxarg/core.py \$$1" > luxarg 
 	
 	@sudo chmod 755 luxarg
 	
