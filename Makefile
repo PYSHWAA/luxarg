@@ -58,8 +58,6 @@ install:
 
 	-@sudo cp -rf . ./.git ./.gitignore /opt/luxarg 2> /dev/null
 		
-	-@sudo rm -f /usr/bin/luxarg 2> /dev/null
-		
 	-@sudo unlink /usr/bin/luxarg-update 2> /dev/null;
     
 	-@sudo cp -rf `pwd`/xdg/luxarg.desktop /usr/share/applications
