@@ -37,7 +37,7 @@ print('...')
 chdir('/opt/luxarg')
 system('pwd')
 
-system('mkdir -p /tmp/luxarg && cp -r . .* /tmp/luxarg')
+system('mkdir -p /tmp/luxarg && cp -r . .git .gitignore /tmp/luxarg')
 chdir('/tmp/luxarg')
 system('pwd')
 
