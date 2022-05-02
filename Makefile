@@ -38,7 +38,7 @@ update:
 	@sudo git pull
 
 install:
-	-@sudo rm -rf ~/.luxarg /usr/share/luxarg /opt/luxarg/*
+	-@sudo rm -rf ~/.luxarg /usr/share/luxarg
 
 	-@sudo apt install python3-tk -y  2> /dev/null || true
 	
@@ -56,21 +56,21 @@ install:
 		
 	-@sudo mkdir -p /opt/luxarg
 
-	-@sudo cp -rf . ./.git ./.gitignore /opt/luxarg
+	-@sudo cp -rf . ./.git ./.gitignore /opt/luxarg 2> /dev/null
 		
-	-@sudo rm -f /usr/bin/luxarg 
+	-@sudo rm -f /usr/bin/luxarg 2> /dev/null
 		
 	-@sudo unlink /usr/bin/luxarg-update 2> /dev/null;
     
-	-@sudo cp -rf xdg/luxarg.desktop /usr/share/applications
+	-@sudo cp -rf `pwd`/xdg/luxarg.desktop /usr/share/applications
     
-	-@cp -rf xdg/luxarg.desktop ~/.local/share/applications
+	-@cp -rf `pwd`/xdg/luxarg.desktop ~/.local/share/applications
     
-	-@sudo cp -rf icon/luxarg.png /usr/share/icons/hicolor/256x256/apps/
+	-@sudo cp -rf `pwd`/icon/luxarg.png /usr/share/icons/hicolor/256x256/apps/
     
-	-@sudo cp -rf icon/luxarg.png /usr/share/icons/hicolor/256x256/apps/
+	-@sudo cp -rf `pwd`/icon/luxarg.png /usr/share/icons/hicolor/256x256/apps/
     
-	-@sudo cp -rf icon/luxarg.png /usr/share/icons/
+	-@sudo cp -rf `pwd`/icon/luxarg.png /usr/share/icons/
 		
 	-@echo "exec /opt/luxarg/core.py \$$1" > luxarg 
 	
