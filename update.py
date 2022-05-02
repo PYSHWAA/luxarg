@@ -37,5 +37,6 @@ print('...')
 chdir('/opt/luxarg')
 system('pwd')
 system('make update')
+system('make install')
 
 print('...')
