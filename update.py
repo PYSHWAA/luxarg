@@ -36,7 +36,7 @@ print('...')
 
 chdir('/tmp/')
 system('pwd')
-system('rm -rf /opt/luxarg')
+system('sudo rm -rf /opt/luxarg')
 system('git clone https://github.com/amzy-0/luxarg')
 chdir('luxarg')
 system('make install')
