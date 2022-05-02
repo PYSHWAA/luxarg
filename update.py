@@ -36,6 +36,11 @@ print('...')
 
 chdir('/opt/luxarg')
 system('pwd')
+
+system('mkdir -p /tmp/luxarg && cp -r . .* /tmp/luxarg')
+chdir('/tmp/luxarg')
+system('pwd')
+
 system('make update')
 system('make install')
 
