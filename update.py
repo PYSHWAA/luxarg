@@ -34,14 +34,11 @@ from os import system, chdir
 
 print('...')
 
-chdir('/opt/luxarg')
+chdir('/tmp/')
 system('pwd')
-
-system('mkdir -p /tmp/luxarg && cp -r . .git .gitignore /tmp/luxarg')
-chdir('/tmp/luxarg')
-system('pwd')
-
-system('make update')
+system('rm -rf /opt/luxarg')
+system('git clone https://github.com/amzy-0/luxarg')
+chdir('luxarg')
 system('make install')
-
+system('rm -rf /tmp/luxarg')
 print('...')
