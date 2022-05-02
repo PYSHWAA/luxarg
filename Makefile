@@ -30,7 +30,7 @@
 
 SHELL = bash
 
-.DEFAULT_GOAL := install`
+.DEFAULT_GOAL := install
 
 install:
 	-@sudo rm -rf ~/.luxarg /usr/share/luxarg
