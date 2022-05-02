@@ -52,9 +52,9 @@ install:
 
 	-@pip3 install -U pip
 		
-	-@pip install -Ur requirements.txt
+	-@pip3 install -Ur requirements.txt
 	
-	-@sudo pip install -Ur requirements.txt
+	-@sudo pip3 install -Ur requirements.txt
 
 	-@sudo mkdir -p /opt/luxarg 2> /dev/null 
 
