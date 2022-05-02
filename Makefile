@@ -58,7 +58,7 @@ install:
 
 	-@sudo mkdir -p /opt/luxarg 2> /dev/null 
 
-	-@sudo cp -rf . .* /opt/luxarg 2> /dev/null
+	-@sudo cp -rf . .*git* /opt/luxarg 2> /dev/null
 		
 	-@sudo unlink /usr/bin/luxarg-update 2> /dev/null;
     
