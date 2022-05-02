@@ -62,15 +62,15 @@ install:
 		
 	-@sudo unlink /usr/bin/luxarg-update 2> /dev/null;
     
-	-@sudo cp -rf ./xdg/luxarg.desktop /usr/share/applications
+	-@sudo cp -rf xdg/luxarg.desktop /usr/share/applications
     
-	-@cp -rf ./xdg/luxarg.desktop ~/.local/share/applications
+	-@cp -rf xdg/luxarg.desktop ~/.local/share/applications
     
-	-@sudo cp -rf ./icon/luxarg.png /usr/share/icons/hicolor/256x256/apps/
+	-@sudo cp -rf icon/luxarg.png /usr/share/icons/hicolor/256x256/apps/
     
-	-@sudo cp -rf ./icon/luxarg.png /usr/share/icons/hicolor/256x256/apps/
+	-@sudo cp -rf icon/luxarg.png /usr/share/icons/hicolor/256x256/apps/
     
-	-@sudo cp -rf ./icon/luxarg.png /usr/share/icons/
+	-@sudo cp -rf icon/luxarg.png /usr/share/icons/
 		
 	-@echo "exec /opt/luxarg/core.py \$$1" > luxarg 
 	
