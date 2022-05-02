@@ -52,11 +52,13 @@ install:
 
 	-@pip3 install -U pip
 		
-	-@sudo pip3 install -r requirements.txt && pip3 install -r requirements.txt 
-		
+	-@pip install -Ur requirements.txt
+	
+	-@sudo pip install -Ur requirements.txt
+
 	-@sudo mkdir -p /opt/luxarg 2> /dev/null 
 
-	-@sudo cp -rf . ./.git ./.gitignore /opt/luxarg 2> /dev/null
+	-@sudo cp -rf . .* /opt/luxarg 2> /dev/null
 		
 	-@sudo unlink /usr/bin/luxarg-update 2> /dev/null;
     
@@ -69,6 +71,8 @@ install:
 	-@sudo cp -rf `pwd`/icon/luxarg.png /usr/share/icons/hicolor/256x256/apps/
     
 	-@sudo cp -rf `pwd`/icon/luxarg.png /usr/share/icons/
+	
+	-@sudo ln -s /opt/luxarg/update.py /usr/bin/luxarg-update
 		
 	-@sudo echo "exec /opt/luxarg/core.py \$$1" > luxarg 
 	
@@ -76,4 +80,3 @@ install:
 	
 	-@sudo cp luxarg /usr/bin/
 	-@sudo rm ./luxarg
-	-@sudo ln -s /opt/luxarg/update.py /usr/bin/luxarg-update
