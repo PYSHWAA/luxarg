@@ -32,11 +32,6 @@ SHELL = bash
 
 .DEFAULT_GOAL := install
 
-update:
-	@sudo git reset HEAD
-	@sudo git restore .
-	@sudo git pull
-
 install:
 	-@sudo rm -rf ~/.luxarg /usr/share/luxarg
 
