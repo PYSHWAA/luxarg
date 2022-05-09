@@ -94,10 +94,7 @@ You must install "pip" before this step ...
 
     $ make 
 
-    # or
-
-    $ make install clean #(optional and the better method) 
-
+    
 # dependencies
     
     $ pip3 install -r requirements.txt
