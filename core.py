@@ -114,7 +114,7 @@ def main():
 
     if sys.argv[0] and len(sys.argv) ==1:
         pass
-    elif sys.argv[1] == '-h' or sys.argv[1]=='--help':
+    elif sys.argv[1] in ['-h', '--help', 'help']:
         print(help_contents)
 
         master.forget(master)
