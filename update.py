@@ -34,11 +34,16 @@ from os import system, chdir
 
 print('...')
 
-chdir('/tmp/')
-system('pwd')
-system('sudo rm -rf /opt/luxarg')
-system('git clone https://github.com/amzy-0/luxarg')
-chdir('luxarg')
-system('make install')
-system('rm -rf /tmp/luxarg')
+if (system('ping -c2 4.2.2.4 > /dev/null 2>&1')) == 0 :
+
+    chdir('/tmp/')
+    system('pwd')
+    system('sudo rm -rf /opt/luxarg')
+    system('git clone https://github.com/amzy-0/luxarg')
+    chdir('luxarg')
+    system('make install')
+    system('rm -rf /tmp/luxarg')
+else: 
+    print(u'\U00002195', 'internet connection error!'.capitalize(), u'\U00002195')
+
 print('...')
