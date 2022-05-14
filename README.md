@@ -9,13 +9,11 @@
 ![license](https://img.shields.io/github/license/amzy-0/luxarg)
 
 
-LUXARG is another keyboard friendly text editor.
+Luxarg is a keyboard-friendly text editor.
 
-This project started at August 2019 and restarted at 2021 TODAY!
+The project was started in August 2019 and restarted on June 13 at 20:14:41, 2021.
 
-Easy to use and user-friendly !
-
-
+Easy to use and user-friendly!
 
 
 # LUXARG support :
@@ -94,10 +92,7 @@ You must install "pip" before this step ...
 
     $ make 
 
-    # or
-
-    $ make install clean #(optional and the better method) 
-
+    
 # dependencies
     
     $ pip3 install -r requirements.txt
