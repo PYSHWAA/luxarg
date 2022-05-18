@@ -69,9 +69,5 @@ install:
 	
 	-@sudo ln -s /opt/luxarg/update.py /usr/bin/luxarg-update
 		
-	-@sudo echo "exec /opt/luxarg/core.py \$$1" > luxarg 
+	-@sudo ln -s /opt/luxarg/core.py /usr/bin/luxarg 
 	
-	@sudo chmod 755 luxarg
-	
-	-@sudo cp luxarg /usr/bin/
-	-@sudo rm ./luxarg
