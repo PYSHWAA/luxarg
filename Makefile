@@ -34,6 +34,7 @@ SHELL = bash
 
 install:
 	-@sudo rm -rf ~/.luxarg /usr/share/luxarg
+	-@sudo unlink /bin/luxarg /bin/luxarg-update 2> /dev/null/ ;
 
 	-@sudo apt install python3-tk -y  2> /dev/null || true
 	
@@ -54,8 +55,6 @@ install:
 	-@sudo mkdir -p /opt/luxarg 2> /dev/null 
 
 	-@sudo cp -rf . .*git* /opt/luxarg 2> /dev/null
-		
-	-@sudo unlink /usr/bin/luxarg-update 2> /dev/null;
     
 	-@sudo cp -rf `pwd`/xdg/luxarg.desktop /usr/share/applications
     
@@ -71,7 +70,3 @@ install:
 	
 	-@sudo ln -s /opt/luxarg/core.py /usr/bin/luxarg		
 	
-	@sudo chmod 755 luxarg
-	
-	-@sudo cp luxarg /usr/bin/
-	-@sudo rm ./luxarg
