@@ -33,7 +33,7 @@ SHELL = bash
 .DEFAULT_GOAL := install
 
 install:
-	-@sudo rm -rf ~/.luxarg /usr/share/luxarg
+	-@sudo rm -rf ~/.luxarg /usr/share/luxarg /bin/*luxarg*
 	-@sudo unlink /bin/luxarg /bin/luxarg-update 2> /dev/null/ ;
 
 	-@sudo apt install python3-tk -y  2> /dev/null || true
