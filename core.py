@@ -227,10 +227,6 @@ def main():
     text_field.bind('<KeyRelease>', lambda e: counter.linenum(text_field, showline_stat))
 
 
-    # key binding for exit and confirm that
-    text_field.bind('<Control-F4>', lambda e : quit())
-    text_field.bind('<Alt-F4>', lambda e : print())
-
     try:
         # try open file from the arg1 (like this : $ luxarg /tmp/tmp)
         try:
@@ -252,17 +248,18 @@ def main():
 
     # text field configuration
 
-    text_field.config(bg=bg_fg_color.bg, fg=bg_fg_color.fg,
-                    relief=SUNKEN,
-                    spacing1=10,
-                    insertbackground=bg_fg_color.fg,
-                    insertborderwidth=1,
-                    insertwidth=5,
-                    width=20,
-                    padx=20,
-                    pady=4,
-                    font=('', font_size),
-                    )
+    text_field.config(bg=bg_fg_color.bg,
+    fg=bg_fg_color.fg,
+    relief=SUNKEN,
+    spacing1=10,
+    insertbackground=bg_fg_color.fg,
+    insertborderwidth=1,
+    insertwidth=5,
+    width=20,
+    padx=20,
+    pady=4,
+    font=('', font_size),
+    )
 
 
     # configuring the scrollbar
