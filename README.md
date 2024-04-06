@@ -47,9 +47,9 @@ Manjaro
 
 # Licensing
 
-AMZY-0 (M.Amin Azimi .K) 
+AMZYEI (M.Amin Azimi .K) 
 
-Copyright (C) (2019-2020-2021)  AMZY-0 (M.Amin Azimi .K) 
+Copyright (C) (2019-2020-2021)  AMZYEI (M.Amin Azimi .K) 
 
 "Luxarg" (This program) is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
