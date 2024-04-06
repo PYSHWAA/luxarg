@@ -1,5 +1,5 @@
-# AMZY-0 (M.Amin Azimi .K) 
-# Copyright (C) 2019-2021 luxarg AMZY-0 (M.Amin Azimi .K) and contributors
+# AMZYEI (M.Amin Azimi .K) 
+# Copyright (C) 2019-2021 luxarg AMZYEI (M.Amin Azimi .K) and contributors
 # 
 # Luxarg is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -68,5 +68,5 @@ install:
 	
 	-@sudo ln -s /opt/luxarg/update.py /usr/bin/luxarg-update
 	
-	-@sudo ln -s /opt/luxarg/core.py /usr/bin/luxarg		
+	-@sudo ln -s /opt/luxarg/main.py /usr/bin/luxarg		
 	
