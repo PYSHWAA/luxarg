@@ -28,9 +28,8 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 You should have received a copy of the GNU General Public License'''
 
-from tkinter import Toplevel, Label
+from ttkbootstrap import Toplevel, Label
 from libs import read_write
-from libs import bg_fg_color
 
 ########-#######################################################
 file_mode = '\nExample : /tmp/tmp\n<ESC> for exit'
@@ -38,6 +37,7 @@ file_mode = '\nExample : /tmp/tmp\n<ESC> for exit'
 ###############################################################
 def insert_mode(text_field, show_status, status ):
     '''insert mode'''
+    show_status.config(bootstyle='success')
     # show insert mode status
     show_status['text'] = '%s\nHELP MODE : <F4> ' % status
 
@@ -48,6 +48,7 @@ def insert_mode(text_field, show_status, status ):
 def stop_mode(text_field, show_status, status ):
     ''' stop mode '''
     # show stop mode status
+    show_status.config(bootstyle=' danger')
 
     show_status['text'] = '%s\nHELP MODE : <F4> ' % status
 
@@ -59,6 +60,7 @@ def stop_mode(text_field, show_status, status ):
 ###############################################################
 def save_mode(text_field, show_status, status, save_path):
     ''' save mode '''
+    show_status.config(bootstyle=' info')
     save_path.focus()
     save_path.select_range(0, 'end')
 
@@ -84,6 +86,7 @@ def save_mode(text_field, show_status, status, save_path):
 ###############################################################
 def open_mode(text_field, show_status, status, file_path):
     ''' open mode '''
+    show_status.config(bootstyle=' warning')
 
     file_path.focus()
     file_path.select_range(0, 'end')
@@ -100,6 +103,7 @@ def open_mode(text_field, show_status, status, file_path):
     )
 
     # show open mode status
+
     show_status['text'] = '%s\nHELP MODE : <F4>%s' % (status, file_mode)
 
     file_path.bind('<Escape>', lambda e : text_field.focus())
@@ -116,9 +120,8 @@ def help_mode(master, show_status, status, help_contents):
     help_window.maxsize()
 
 
-    help_label = Label(help_window, text=help_contents, font=('', 17))
-    help_window.config(bg=bg_fg_color.bg)
-    help_label.config(background=bg_fg_color.bg, foreground=bg_fg_color.fg)
+    help_label = Label(help_window, text=help_contents, font=('', 15))
+    # help_label.config(background=bg_fg_color.bg, foreground=bg_fg_color.fg)
     help_label.pack()
     show_status['text'] = '%s\nHELP MODE : <F4> ' % status
     return show_status

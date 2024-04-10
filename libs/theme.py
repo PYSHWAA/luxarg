@@ -26,7 +26,26 @@ Luxarg is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
-You should have received a copy of the GNU General Public License'''
+You should have received a copy of the GNU General Public License
 
-bg = 'black'
-fg = 'white'
+'''
+
+'''
+Light themes:     Dark themes:             
+| - cosmo         | - solar 
+| - flatly        | - superhero
+| - journal       | - darkly (default theme)
+| - litera        | - cyborg 
+| - lumen         | - vapor
+| - minty           
+| - pulse          
+| - sandstone     
+| - united         
+| - yeti          
+| - morph          
+| - simplex      
+
+'''
+
+
+theme='darkly'    
