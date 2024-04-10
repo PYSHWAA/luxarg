@@ -31,13 +31,14 @@ You should have received a copy of the GNU General Public License
 '''
 from os import path, getenv
 import sys
-from tkinter import BOTH, RIGHT, SUNKEN, Tk, Text, Scrollbar,Label, Entry
+import ttkbootstrap as tkb
+from ttkbootstrap import BOTH, RIGHT, LEFT, SUNKEN, Text, Scrollbar,Label, Entry, Meter
 from PIL import Image, ImageTk
 from libs import keys_actions
 from libs import read_write
 from libs import file_from_args
 from libs import counter
-from libs import bg_fg_color
+from libs import theme
 
 help_contents = '''
 
@@ -64,44 +65,43 @@ ZOOM OUT    : <Ctrl + minus(-)>
 
 def main():
     ''' The Main function (entry point) '''
-    master = Tk()
+    master = tkb.Window(themename=theme.theme)
     master.geometry("700x700")
     master.title("LuxarG")
     master.minsize(height=500, width=500)
-    master.config(bg=bg_fg_color.bg)
+    # master.config(bg=bg_fg_color.bg)
 
     show_status = Label()
     show_status['text'] = '__STOP_MODE__\nHELP MODE : <F4>'
-    show_status['bg'] = bg_fg_color.bg
-    show_status['fg'] = bg_fg_color.fg
-    show_status['font'] = ('', 13)
+
+    show_status['font'] = ('', 14)
 
     #for line status
-    showline_stat = Label()
-    showline_stat['bg']=bg_fg_color.bg
-    showline_stat['fg']=bg_fg_color.fg
-    showline_stat['font']  = ('', 12)
+    showline_stat = Label(bootstyle='info')
+    # showline_stat['bg']=bg_fg_color.bg
+    # showline_stat['fg']=bg_fg_color.fg
+    showline_stat['font']  = ('', 14)
 
 
-    # load statusbar before all components
+# load statusbar before all components          
     showline_stat.pack(fill=BOTH)
-    show_status.pack(fill='x')
+    show_status.pack(fill='y')
 
     # for storing all the file_path variable value
     # global file_path
-    file_path = Entry(master, font=('', 13))
+
+    file_path = Entry(master, font=('', 14), bootstyle='secondary')
 
     # "file_path" configure :
-    file_path.configure(bg=bg_fg_color.bg,
-        fg=bg_fg_color.fg,
-        insertbackground='yellow',
-    )
+    # file_path.configure(
+    #     insertbackground='yellow'
+    # ) ## OLD VERSION 1.0
 
     file_path.insert(0, 'file path example : /tmp/tmp')
     file_path.pack(fill=BOTH)
 
     # adding scrollbar
-    scrollbar = Scrollbar(master)
+    scrollbar = Scrollbar(master, bootstyle='secondary')
 
     # packing scrollbar
     scrollbar.pack(side=RIGHT, fill='y')
@@ -124,12 +124,12 @@ def main():
         try:
             # try to set logo
             img = ImageTk.PhotoImage(Image.open('/opt/luxarg/icon/luxarg.png'))
-            master.iconphoto(False, img)
+            master.iconphoto = img
 
         except:
             # local loading (LOGO)
             img = ImageTk.PhotoImage(Image.open('./icon/luxarg.png'))
-            master.iconphoto(False, img)
+            master.iconphoto = img
 
     except:
         print('icon has not been loaded')
@@ -210,30 +210,48 @@ def main():
     text_field.bind('<Control-Shift-Z>', lambda e : text_field.edit_redo)
 
     # zoom control by CTRL + Mouse scroll
-    # text_field.bind('<Control-Button-4>', lambda e : font_resizer(text_field, '+'))
-    # text_field.bind('<Control-Button-5>', lambda e : font_resizer(text_field, '-'))
-    text_field.bind('<Control-equal>', lambda e : font_resizer(text_field, '+'))
-    text_field.bind('<Control-minus>', lambda e : font_resizer(text_field, '-'))
+    # text_field.bind('<Control-Button-4>', 
+    # lambda e : font_resizer(text_field, '+'))
+    # text_field.bind('<Control-Button-5>', 
+    # lambda e : font_resizer(text_field, '-'))
+    text_field.bind('<Control-equal>', 
+    lambda e : font_resizer(text_field, '+'))
+    text_field.bind('<Control-minus>', 
+    lambda e : font_resizer(text_field, '-'))
 
     # delete all with CTRL + 0
-    text_field.bind('<Control-0>', lambda e :text_field.delete('1.0', 'end'))
+    text_field.bind('<Control-0>', 
+    lambda e :text_field.delete('1.0', 'end'))
 
 
     # key binding for calc lines
-    text_field.bind('<BackSpace>', lambda e: counter.linenum(text_field, showline_stat))
-    text_field.bind('<Return>', lambda e : counter.linenum(text_field, showline_stat))
-    text_field.bind('<KP_Enter>', lambda e : text_field.insert('end', '\n'),
-    counter.linenum(text_field, showline_stat))
-    text_field.bind('<KeyRelease>', lambda e: counter.linenum(text_field, showline_stat))
+    text_field.bind('<BackSpace>', 
+    lambda e: counter.linenum(text_field, showline_stat))
+    text_field.bind('<Return>', 
+    lambda e : counter.linenum(text_field, showline_stat))
+    text_field.bind('<KP_Enter>', 
+    lambda e : text_field.insert('end', '\n'),
+    counter.linenum(text_field, 
+    showline_stat))
+    text_field.bind('<KeyRelease>', 
+    lambda e: counter.linenum(text_field, showline_stat))
 
 
     try:
         # try open file from the arg1 (like this : $ luxarg /tmp/tmp)
         try:
-            file_from_args.open_mode_by_arg(text_field, show_status, 'r', sys.argv[1])
+            file_from_args.open_mode_by_arg(
+                text_field, 
+                show_status, 
+                'r',
+                sys.argv[1]
+                )
+            
             file_path.delete(0, 'end')
             file_path.insert(0, str(path.expanduser(sys.argv[1])))
+            
             counter.linenum(text_field, showline_stat)
+        
         # if pass is not true
         except OSError as error:
             read_write.message('', str(error)[10:])
@@ -248,22 +266,21 @@ def main():
 
     # text field configuration
 
-    text_field.config(bg=bg_fg_color.bg,
-    fg=bg_fg_color.fg,
+    text_field.config(
     relief=SUNKEN,
     spacing1=10,
-    insertbackground=bg_fg_color.fg,
     insertborderwidth=1,
     insertwidth=5,
     width=20,
     padx=20,
     pady=4,
     font=('', font_size),
+    
     )
 
 
     # configuring the scrollbar
-    scrollbar.config(bg=bg_fg_color.bg, command=text_field.yview)
+    scrollbar.config(bootstyle='secondary', command=text_field.yview)
 
     master.mainloop()
 
