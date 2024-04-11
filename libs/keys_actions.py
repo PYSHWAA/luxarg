@@ -32,7 +32,8 @@ from ttkbootstrap import Toplevel, Label
 from libs import read_write
 
 ########-#######################################################
-file_mode = '\nExample : /tmp/tmp\n<ESC> for exit'
+# file_mode = '\nExample : /tmp/tmp\n<ESC> for exit'
+file_mode = ''
 
 ###############################################################
 def insert_mode(text_field, show_status, status ):
