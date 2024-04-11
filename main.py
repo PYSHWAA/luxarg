@@ -65,7 +65,10 @@ ZOOM OUT    : <Ctrl + minus(-)>
 
 def main():
     ''' The Main function (entry point) '''
-    master = tkb.Window(themename=theme.theme)
+    master = tkb.Window(themename=theme.theme, 
+    iconphoto='./icon/luxarg.png',
+    title="LuxarG"
+    )
     master.geometry("700x700")
     master.title("LuxarG")
     master.minsize(height=500, width=500)
@@ -120,19 +123,6 @@ def main():
         master.forget(master)
         sys.exit()
 
-    try:
-        try:
-            # try to set logo
-            img = ImageTk.PhotoImage(Image.open('/opt/luxarg/icon/luxarg.png'))
-            master.iconphoto = img
-
-        except:
-            # local loading (LOGO)
-            img = ImageTk.PhotoImage(Image.open('./icon/luxarg.png'))
-            master.iconphoto = img
-
-    except:
-        print('icon has not been loaded')
 
     # set font size to 20
     global font_size
