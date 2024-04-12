@@ -65,8 +65,6 @@ install:
 	-@sudo cp -rf `pwd`/icon/luxarg.png /usr/share/icons/hicolor/256x256/apps/
     
 	-@sudo cp -rf `pwd`/icon/luxarg.png /usr/share/icons/
-	
-	-@sudo ln -s /opt/luxarg/update.py /usr/bin/luxarg-update
-	
-	-@sudo ln -s /opt/luxarg/main.py /usr/bin/luxarg		
+		
+	-@sudo ln -s /opt/luxarg/main.py /usr/bin/luxarg	
 	
