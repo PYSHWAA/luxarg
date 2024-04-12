@@ -42,7 +42,8 @@ def open_mode_by_arg(text_field, show_status, io_mode, path_arg):
     text_field.insert('1.0', fin.read())
 
     #change status
-    show_status['text']='__OPEN_MODE__\nHELP MODE : <F4>'
+    show_status['text']='✒OPEN_MODE✒\nHELP MODE : <F4>'
+    show_status.config(bootstyle='warning')
     text_field.configure(state='disabled')
 
     # close the file
