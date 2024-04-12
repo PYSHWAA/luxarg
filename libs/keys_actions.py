@@ -87,7 +87,7 @@ def save_mode(text_field, show_status, status, save_path):
 ###############################################################
 def open_mode(text_field, show_status, status, file_path):
     ''' open mode '''
-    show_status.config(bootstyle=' warning')
+    show_status.config(bootstyle='warning')
 
     file_path.focus()
     file_path.select_range(0, 'end')
@@ -106,7 +106,7 @@ def open_mode(text_field, show_status, status, file_path):
     # show open mode status
 
     show_status['text'] = '%s\nHELP MODE : <F4>%s' % (status, file_mode)
-
+    show_status.config(bootstyle='warning')
     file_path.bind('<Escape>', lambda e : text_field.focus())
 
     # return all
@@ -117,12 +117,15 @@ def open_mode(text_field, show_status, status, file_path):
 def help_mode(master, show_status, status, help_contents):
     ''' help mode '''
     help_window=Toplevel(master)
-    help_window.title(' LUXARG => HELP ')
+    help_window.title(' LUXARG :: HELP ')
     help_window.maxsize()
 
 
     help_label = Label(help_window, text=help_contents, font=('', 15))
-    # help_label.config(background=bg_fg_color.bg, foreground=bg_fg_color.fg)
+    # help_label.config(background=bg_fg_color.bg, foreground=bg_fg_color.fg) #DEPRICATED
+    #Help content bootstrap color scheme
+    help_label.config(bootstyle='light', padding=10)
     help_label.pack()
     show_status['text'] = '%s\nHELP MODE : <F4> ' % status
+    show_status.config(bootstyle='primary')
     return show_status
