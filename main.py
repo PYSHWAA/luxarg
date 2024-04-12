@@ -69,7 +69,7 @@ def main():
     ''' The Main function (entry point) '''
     master = tkb.Window(themename=theme.theme, 
     title="LuxarG",
-    iconphoto = '/opt/luxarg/icon/luxarg.png'
+    iconphoto = '/usr/share/icons/luxarg.png'
     )
 
 
