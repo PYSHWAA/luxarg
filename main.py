@@ -68,9 +68,12 @@ ZOOM OUT    : <Ctrl + minus(-)>
 def main():
     ''' The Main function (entry point) '''
     master = tkb.Window(themename=theme.theme, 
-    iconphoto='./icon/luxarg.png',
-    title="LuxarG"
+    title="LuxarG",
+    iconphoto = '/opt/luxarg/icon/luxarg.png'
     )
+
+
+
     master.geometry("700x700")
     master.title("LuxarG")
     master.minsize(height=500, width=500)
