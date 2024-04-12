@@ -97,20 +97,21 @@ You must install "pip" before this step ...
     
 # dependencies
     
-    $ pip3 install -r requirements.txt
+    $ pip install -r requirements.txt
 
-# update method
+# update method (only for system wide installation)
     
-    $ luxarg-update (v1.0)
+    $ cd /opt/luxarg
+    $ git pull
+    $ git restore . 
+    
 
 
 # Install pip
-    pip.txt
+Please check pip.txt file.
 
 
-# local build and execute
-
-
+# Local build and execute
 
 ### INSTALL PIP BEFORE THIS OPERATIONS
 ****
@@ -146,5 +147,5 @@ You must install "pip" before this step ...
         $ pip install -Ur requirements.txt
 
 ### Step (3)
-#### RUN core.py         
-        $ python3 core.py
+#### RUN main.py         
+        $ python3 main.py
