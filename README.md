@@ -102,8 +102,8 @@ You must install "pip" before this step ...
 # update method (only for system wide installation)
     
     $ cd /opt/luxarg
-    $ git pull
-    $ git restore . 
+    $ sudo git pull
+    $ sudo git restore . 
     
 
 
