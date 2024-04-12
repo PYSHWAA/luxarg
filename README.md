@@ -44,7 +44,7 @@ Manjaro
 ### 2019
 ![screenshot](screenshot/1.png)
 ### 2024
-![screenshot](screenshot/Screenshot\ from 2024-04-12 01-00-16.png)
+![screenshot](screenshot/2.png)
 
 
 # Licensing
