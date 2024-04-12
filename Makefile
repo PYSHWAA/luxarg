@@ -33,43 +33,40 @@ SHELL = bash
 .DEFAULT_GOAL := install
 
 install:
-	####################################################################
-	#		Old installation
-	####################################################################
-	# -@sudo rm -rf ~/.luxarg /usr/share/luxarg /bin/*luxarg*
-	# -@sudo unlink /bin/luxarg /bin/luxarg-update 2> /dev/null/ ;
+	-@sudo rm -rf ~/.luxarg /usr/share/luxarg /bin/*luxarg*
+	-@sudo unlink /bin/luxarg /bin/luxarg-update 2> /dev/null/ ;
 
-	# -@sudo apt install python3-tk -y  2> /dev/null || true
+	-@sudo apt install python3-tk -y  2> /dev/null || true
 	
-	# -@sudo dnf install -y python3-tkinter 2> /dev/null || true
+	-@sudo dnf install -y python3-tkinter 2> /dev/null || true
 	
-	# -@sudo pacman -Syu tk --noconfirm 2> /dev/null || true
+	-@sudo pacman -Syu tk --noconfirm 2> /dev/null || true
 	
-	# -@sudo yum install -y python3-tkinter 2> /dev/null || true
+	-@sudo yum install -y python3-tkinter 2> /dev/null || true
 	
-	# -@sudo zypper in -y python-tk 2> /dev/null || true
+	-@sudo zypper in -y python-tk 2> /dev/null || true
 
-	# -@pip3 install -U pip
+	-@pip3 install -U pip
 		
-	# -@pip3 install -Ur requirements.txt
+	-@pip3 install -Ur requirements.txt
 	
-	# -@sudo pip3 install -Ur requirements.txt
+	-@sudo pip3 install -Ur requirements.txt
 
-	# -@sudo mkdir -p /opt/luxarg 2> /dev/null 
+	-@sudo mkdir -p /opt/luxarg 2> /dev/null 
 
-	# -@sudo cp -rf . .*git* /opt/luxarg 2> /dev/null
+	-@sudo cp -rf . .*git* /opt/luxarg 2> /dev/null
     
-	# -@sudo cp -rf `pwd`/xdg/luxarg.desktop /usr/share/applications
+	-@sudo cp -rf `pwd`/xdg/luxarg.desktop /usr/share/applications
     
-	# -@cp -rf `pwd`/xdg/luxarg.desktop ~/.local/share/applications
+	-@cp -rf `pwd`/xdg/luxarg.desktop ~/.local/share/applications
     
-	# -@sudo cp -rf `pwd`/icon/luxarg.png /usr/share/icons/hicolor/256x256/apps/
+	-@sudo cp -rf `pwd`/icon/luxarg.png /usr/share/icons/hicolor/256x256/apps/
     
-	# -@sudo cp -rf `pwd`/icon/luxarg.png /usr/share/icons/hicolor/256x256/apps/
+	-@sudo cp -rf `pwd`/icon/luxarg.png /usr/share/icons/hicolor/256x256/apps/
     
-	# -@sudo cp -rf `pwd`/icon/luxarg.png /usr/share/icons/
+	-@sudo cp -rf `pwd`/icon/luxarg.png /usr/share/icons/
 	
-	# -@sudo ln -s /opt/luxarg/update.py /usr/bin/luxarg-update
+	-@sudo ln -s /opt/luxarg/update.py /usr/bin/luxarg-update
 	
-	# -@sudo ln -s /opt/luxarg/main.py /usr/bin/luxarg		
-	####################################################################
+	-@sudo ln -s /opt/luxarg/main.py /usr/bin/luxarg		
+	
