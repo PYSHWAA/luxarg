@@ -50,8 +50,6 @@ install:
 		
 	-@pip3 install -Ur requirements.txt
 	
-	-@sudo pip3 install -Ur requirements.txt
-
 	-@sudo mkdir -p /opt/luxarg 2> /dev/null 
 
 	-@sudo cp -rf . .*git* /opt/luxarg 2> /dev/null
@@ -65,6 +63,7 @@ install:
 	-@sudo cp -rf `pwd`/icon/luxarg.png /usr/share/icons/hicolor/256x256/apps/
     
 	-@sudo cp -rf `pwd`/icon/luxarg.png /usr/share/icons/
-		
-	-@sudo ln -s /opt/luxarg/main.py /usr/bin/luxarg	
 	
+	@ pyinstaller main.py --onefile -i icon/luxarg.png --name luxarg --hidden-import='PIL._tkinter_finder'
+	
+	@ sudo cp dist/luxarg /bin/ && rm -r build dist luxarg.spec
