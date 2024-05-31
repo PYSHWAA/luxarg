@@ -29,23 +29,24 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 
 '''
-from os import path, getenv
+from os import path, getenv, system
 import sys
 import ttkbootstrap as tkb
-from ttkbootstrap import BOTH, RIGHT, LEFT, SUNKEN, Text, Scrollbar,Label, Entry, Meter
+from ttkbootstrap import BOTH, RIGHT, Toplevel, SUNKEN, Text, Scrollbar,Label, Entry, Meter
 from PIL import Image, ImageTk
 from libs import keys_actions
 from libs import read_write
 from libs import file_from_args
 from libs import counter
 from libs import theme
-
+from tkterminal import Terminal 
 help_contents = '''
 
 INSERT MODE : <F1>
 SAVE   MODE : <F2>
 OPEN   MODE : <F3>
 HELP   MODE : <F4>
+TERMINAL    : <F5>
 DELETE ALL  : <Ctrl + 0>
 SELECT ALL  : <Ctrl + />
 CORSUR RIGHT: <Ctrl + f> move the cursor forward one space.
@@ -200,7 +201,31 @@ def main():
         '☠ HELP_MODE ☠',
         help_contents
         )
+
     )
+    def run_terminal():
+
+        terminal_bar = Toplevel(master)
+        terminal_bar.title('Luxarg Terminal')
+        terminal = Terminal(terminal_bar, pady=10, padx=10)
+        terminal.shell = True
+        
+        terminal.config(
+    insertborderwidth=1,
+    insertwidth=5,
+    width=30,
+    padx=20,
+    pady=4,
+    font=('', font_size))
+        terminal.focus()
+        terminal.pack(expand=True, fill='both')
+
+    
+    
+    # TODO : terminal emulator MUST be develop here
+       # HELP MODE (binding F5)
+
+    text_field.bind('<F5>', lambda e :run_terminal())
 
     # UNDO
     text_field.bind('<Control-Z>', lambda e : text_field.edit_undo)
@@ -221,6 +246,7 @@ def main():
     # delete all with CTRL + 0
     text_field.bind('<Control-0>', 
     lambda e :text_field.delete('1.0', 'end'))
+
     
 
     # key binding for calc lines

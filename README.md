@@ -74,6 +74,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     SAVE   MODE : <F2>
     OPEN   MODE : <F3>
     HELP   MODE : <F4>
+    TERMINAL 	: <F5>
     DELETE ALL  : <Ctrl + 0>
     SELECT ALL  : <Ctrl + />
     CURSOR RIGHT: <Ctrl + f> move the cursor forward one space.
