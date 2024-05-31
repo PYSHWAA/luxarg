@@ -66,4 +66,4 @@ install:
 	
 	@ pyinstaller main.py --onefile -i icon/luxarg.png --name luxarg --hidden-import='PIL._tkinter_finder'
 	
-	@ sudo cp dist/luxarg /bin/ && rm -r build dist luxarg.spec
+	@ sudo cp dist/luxarg /usr/bin/ && rm -r build dist luxarg.spec
