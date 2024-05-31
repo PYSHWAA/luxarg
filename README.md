@@ -101,10 +101,9 @@ You must install "pip" before this step ...
     $ pip install -r requirements.txt
 
 # update method (only for system wide installation)
-    
-    $ cd /opt/luxarg
-    $ sudo git pull
-    $ sudo git restore . 
+
+    $ git pull
+    $ git restore . 
     
 
 
