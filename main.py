@@ -149,7 +149,7 @@ def main():
 
         return component['font']
 
-    show_font_size = Meter(bootstyle='info', metersize=font_size)
+    show_font_size = Label(bootstyle='info', font=font_size)
     show_font_size.pack()
 
 

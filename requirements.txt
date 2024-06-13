@@ -1,7 +1,7 @@
 altgraph==0.17
 future==0.18.2
 packaging==24.0
-Pillow==9.1.1
+pillow==10.3.0
 pyinstaller==6.5.0
 pyinstaller-hooks-contrib==2024.3
 tkterminal==0.1.0
