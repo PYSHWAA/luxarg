@@ -68,10 +68,18 @@ Manjaro
     HELP CLI    : luxarg <-h/--help>
     ZOOM IN     : <Ctrl + equal(=)>
     ZOOM OUT    : <Ctrl + minus(-)>
+#Microsoft Windows installation guide: 
 
-# INSTALLATION
+1. Access the MS-Windows directory in the LuxarG project.
 
-You must install "pip" before this step ...   
+2. Execute the Setup.exe file in the MS-Windows directory. 
+
+3. Proceed with the installation using the guided wizard.
+
+
+#Linux installation
+
+You must install "pip" before this step...   
 
 
     $ make 
@@ -81,7 +89,7 @@ You must install "pip" before this step ...
     
     $ pip install -r requirements.txt
 
-# update method (only for system wide installation)
+# update method (only for system-wide installation)
 
     $ git pull
     $ git restore . 
@@ -124,7 +132,7 @@ Please check pip.txt file.
     
 
 ### Step (2)
-#### Install dependancies (BY PIP)
+#### Install dependencies (BY PIP)
         $ pip install -Ur requirements.txt
 
 ### Step (3)
