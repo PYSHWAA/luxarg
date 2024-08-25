@@ -21,19 +21,19 @@ Easy to use and user-friendly!
 ![](https://icons.iconarchive.com/icons/igh0zt/ios7-style-metro-ui/72/MetroUI-Folder-OS-Windows-8-icon.png) 
 Windows
 ![](https://icons.iconarchive.com/icons/tatice/operating-systems/48/Fedora-icon.png) 
-Fedora, 
+Fedora
 ![](https://icons.iconarchive.com/icons/fatcow/farm-fresh/32/centos-icon.png)
-CENTOS,
+CENTOS
 ![](https://icons.iconarchive.com/icons/saki/nuoveXT/48/Apps-redhat-icon.png)
-RedHat,
+RedHat
 ![](https://icons.iconarchive.com/icons/tatice/operating-systems/48/Debian-icon.png)
-Debian,
+Debian
 ![](https://icons.iconarchive.com/icons/tatice/operating-systems/48/Ubuntu-icon.png)
-Ubuntu, 
+Ubuntu
 ![](https://icons.iconarchive.com/icons/papirus-team/papirus-apps/48/distributor-logo-opensuse-icon.png)
-OpenSUSE, 
+OpenSUSE
 ![](https://icons.iconarchive.com/icons/fatcow/farm-fresh/32/arch-linux-icon.png)
-Arch,
+Arch
 ![](https://icons.iconarchive.com/icons/papirus-team/papirus-apps/48/manjaro-welcome-icon.png)
 Manjaro
 
@@ -68,19 +68,21 @@ Manjaro
     HELP CLI    : luxarg <-h/--help>
     ZOOM IN     : <Ctrl + equal(=)>
     ZOOM OUT    : <Ctrl + minus(-)>
-#Microsoft Windows installation guide: 
-
-1. Access the MS-Windows directory in the LuxarG project.
-
-2. Execute the Setup.exe file in the MS-Windows directory. 
-
-3. Proceed with the installation using the guided wizard.
 
 
-#Linux installation
 
-You must install "pip" before this step...   
+# Microsoft Windows installation guide: 
 
+- Access the MS-Windows directory in the LuxarG project.
+
+- Execute the Setup.exe file in the MS-Windows directory. 
+
+- Proceed with the installation using the guided wizard.
+
+
+# Linux installation
+
+You have to install "pip" before this STEP...   
 
     $ make 
 
@@ -91,13 +93,14 @@ You must install "pip" before this step...
 
 # update method (only for system-wide installation)
 
-    $ git pull
+    $ git pull -ff
     $ git restore . 
+    $ make 
     
 
 
-# Install pip
-Please check pip.txt file.
+# For Install pip
+*Please check pip.txt file.*
 
 
 # Local build and execute
