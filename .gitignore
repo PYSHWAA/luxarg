@@ -2,3 +2,6 @@ libs/__pycache__/
 venv/
 luxarg
 .vscode
+dist
+build
+MS-Windows/*iss
