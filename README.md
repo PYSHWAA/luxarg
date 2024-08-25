@@ -18,6 +18,8 @@ Easy to use and user-friendly!
 
 # LUXARG support :
 
+![](https://icons.iconarchive.com/icons/igh0zt/ios7-style-metro-ui/72/MetroUI-Folder-OS-Windows-8-icon.png) 
+Windows
 ![](https://icons.iconarchive.com/icons/tatice/operating-systems/48/Fedora-icon.png) 
 Fedora, 
 ![](https://icons.iconarchive.com/icons/fatcow/farm-fresh/32/centos-icon.png)

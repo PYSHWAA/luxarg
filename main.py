@@ -1,34 +1,5 @@
 #!/usr/bin/env python3
 
-'''
-AMZYEI (M.Amin Azimi .K)
-Copyright (C) 2019-2021 luxarg AMZYEI (M.Amin Azimi .K) and contributors
-
-Luxarg is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-Luxarg is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
-This file is part of Luxarg.
-Luxarg is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-Luxarg is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-You should have received a copy of the GNU General Public License
-
-'''
 from os import path, getenv, system
 import sys
 import ttkbootstrap as tkb
@@ -38,8 +9,9 @@ from libs import keys_actions
 from libs import read_write
 from libs import file_from_args
 from libs import counter
-from libs import theme
 from tkterminal import Terminal 
+
+
 help_contents = '''
 
 INSERT MODE : <F1>
@@ -68,10 +40,26 @@ ZOOM OUT    : <Ctrl + minus(-)>
 
 def main():
     ''' The Main function (entry point) '''
-    master = tkb.Window(themename=theme.theme, 
-    title="LuxarG",
-    iconphoto = '/usr/share/icons/luxarg.png'
+    #icon loader
+    theme_selected_latest = ''
+    with open('theme.conf', 'r') as theme_selected:
+        theme_selected_latest = theme_selected.read()
+        print(theme_selected_latest)
+
+
+
+
+    master = tkb.Window(
+        themename='%s' % theme_selected_latest.split('\n')[14].replace('theme=', '').strip(), 
+        title="LuxarG",
+
+
     )
+        
+    if sys.platform == 'linux' or sys.platform == 'linux2':
+        master.iconbitmap('/usr/share/icons/luxarg.png')
+    elif sys.platform == 'win32':
+        master.iconbitmap('./luxarg.ico')
 
 
 
