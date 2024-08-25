@@ -58,6 +58,7 @@ def main():
         
     if sys.platform == 'linux' or sys.platform == 'linux2':
         master.iconbitmap('/usr/share/icons/luxarg.png')
+        
     elif sys.platform == 'win32':
         master.iconbitmap('./luxarg.ico')
 
