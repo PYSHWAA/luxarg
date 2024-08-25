@@ -47,6 +47,8 @@ Manjaro
 ![screenshot](screenshot/1.png)
 ### 2024
 ![screenshot](screenshot/2.png)
+### Windows Edition (2024)
+![screenshot](screenshot/windows.png)
 
 
 # KEYS : 
